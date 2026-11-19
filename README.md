@@ -1,7 +1,7 @@
 # RV Sulz – WordPress-Theme
 
 Block-Theme für den **RV Enzian Sulz** (Kunstrad & Radball, seit 1924) – [wordpress.rv-sulz.at](http://wordpress.rv-sulz.at).
-Modernes Vereinsdesign in Enzian-Blau, Einstellungen wie bei HybridMag, Dunkelmodus und lokal eingebundene Schriften (DSGVO-freundlich).
+Modernes Vereinsdesign in Enzian-Blau, viele Einstellungen im Customizer, Dunkelmodus und lokal eingebundene Schriften (DSGVO-freundlich).
 
 ![Startseite](docs/screenshots/startseite.jpg)
 
@@ -17,8 +17,9 @@ Modernes Vereinsdesign in Enzian-Blau, Einstellungen wie bei HybridMag, Dunkelmo
   Neuigkeiten-Raster und „Komm ins Training!“ – alles einstellbar unter *Customizer → Startseite*
   (Kategorie, Anzahl, Überschrift, ein-/ausblenden).
 - **Seiten /kunstrad/ und /radball/** mit automatisch den neuesten Beiträgen der Kategorie.
-- **Menüs und Fußbereich wie bei HybridMag**: Pflege unter *Design → Menüs* und *Design → Widgets*,
-  Positionsnamen wie bei HybridMag, damit die Zuordnung beim Theme-Wechsel erhalten bleibt.
+- **Menüs und Fußbereich klassisch verwaltbar**: Pflege unter *Design → Menüs* und *Design → Widgets*,
+  die Menü-Zuordnung bleibt beim Theme-Wechsel erhalten.
+- **Updates direkt aus GitHub**: WordPress meldet neue Versionen, Update mit einem Klick.
 - **Dunkelmodus** nach Geräteeinstellung plus Umschalter, weißes Logo im Dunkelmodus.
 - **Termine** aus dem Plugin „Simple Calendar“ im Theme-Design (Monats- und Listenansicht).
 - **Schriften** Inter und Barlow Condensed lokal eingebunden – keine Verbindung zu Google.

@@ -103,7 +103,7 @@ function rv_sulz_customize_register( $wp_customize ) {
 		'rv_sulz_frontpage',
 		array(
 			'title'       => __( 'Startseite', 'rv-sulz' ),
-			'description' => __( 'Welche Kategorien in welchem Bereich der Startseite erscheinen – ähnlich wie bei HybridMag.', 'rv-sulz' ),
+			'description' => __( 'Welche Kategorien in welchem Bereich der Startseite erscheinen.', 'rv-sulz' ),
 			'priority'    => 30,
 		)
 	);

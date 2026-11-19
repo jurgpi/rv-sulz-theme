@@ -5,8 +5,8 @@ Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.
 1. Design → Themes → Theme hinzufügen → Theme hochladen → dist\rv-sulz-<version>.zip → Aktivieren
    (bei einem Update „Aktuelle Version ersetzen“ wählen).
 2. Das bestehende Website-Logo wird automatisch übernommen (sonst wird das mitgelieferte Vereinslogo gezeigt).
-3. Menüs wie bei HybridMag unter Design → Menüs pflegen. Positionen:
-   * Hauptmenü (Kopfbereich) – heißt intern wie bei HybridMag "primary"; die bisherige Zuordnung
+3. Menüs klassisch unter Design → Menüs pflegen. Positionen:
+   * Hauptmenü (Kopfbereich) – heißt intern "primary"; die bisherige Zuordnung
      wird beim Theme-Wechsel normalerweise übernommen (sonst dort einmal anhaken).
    * Fußbereich – Spalte „Sport“ / Spalte „Verein“, Social-Media-Links (Facebook/Instagram werden erkannt).
    Ohne zugewiesenes Menü zeigt das Theme Vorgabe-Einträge. Im Website-Editor sieht man immer
@@ -17,13 +17,13 @@ Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.
 == Aufbau ==
 * Startseite (front-page): Top-Beiträge, News Kunstrad | Radball, Sparten-Band, Neuigkeiten-Raster, Mitmach-Aufruf.
 * Seiten /kunstrad/ und /radball/: Seitentext + automatisch die neuesten Beiträge der Kategorie (page-kunstrad / page-radball).
-* Startseite einstellen (wie bei HybridMag): Design → Customizer → Startseite.
+* Startseite einstellen: Design → Customizer → Startseite.
   Für jeden Bereich wählbar: Kategorie, Anzahl Beiträge, Überschrift, anzeigen ja/nein
   (Top-Beiträge, zwei News-Spalten, Sparten-Band, Neuigkeiten-Raster, „Komm ins Training!“).
   Vorgabe: linke Spalte Kunstrad, rechte Spalte Radball (über den Kategorie-Slug gefunden).
 * Seiten /kunstrad/ und /radball/ zeigen fest Kategorie-ID 3 bzw. 4 – bei anderen IDs in
   templates/page-*.html anpassen (oder im Editor den Abfrage-Loop umstellen).
-* Fußbereich verwalten (wie bei HybridMag):
+* Fußbereich verwalten:
   - Design → Widgets: „Fußbereich 1–4“ = die vier Spalten. Leer = Vorgabe des Themes;
     die Spalten „Sport“ und „Verein“ werden ohne Widget und ohne zugewiesenes Menü ausgeblendet.
     Für eine Menüspalte das Widget „Navigationsmenü“ nehmen (Titel = Überschrift, Menü auswählen).

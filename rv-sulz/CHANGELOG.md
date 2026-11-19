@@ -8,6 +8,12 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.5.1] – 2026-11-19
+### Geändert
+- Beschreibungen ohne Verweise auf andere Themes: README/GitHub-Startseite, readme.txt und
+  Beschreibung des Customizer-Bereichs „Startseite“. Funktion unverändert.
+- GitHub-Startseite um „Updates direkt aus GitHub“ ergänzt.
+
 ## [1.5.0] – 2026-11-19
 ### Neu
 - Updates direkt aus GitHub: Das Theme meldet neue Versionen unter Dashboard → Aktualisierungen
