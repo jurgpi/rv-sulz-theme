@@ -9,7 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'RV_SULZ_VERSION', '1.4.5' );
+// Version kommt aus dem Kopf von style.css (einzige Stelle, die gepflegt wird – siehe CHANGELOG.md).
+// Sie hängt an CSS-URLs (?ver=…), damit Browser nach einem Update neu laden.
+define( 'RV_SULZ_VERSION', (string) wp_get_theme( get_template() )->get( 'Version' ) );
 
 /**
  * Theme-Unterstützung.

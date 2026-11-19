@@ -2,7 +2,8 @@
 Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.6+.
 
 == Installation ==
-1. Design → Themes → Theme hinzufügen → Theme hochladen → rv-sulz.zip → Aktivieren.
+1. Design → Themes → Theme hinzufügen → Theme hochladen → dist\rv-sulz-<version>.zip → Aktivieren
+   (bei einem Update „Aktuelle Version ersetzen“ wählen).
 2. Das bestehende Website-Logo wird automatisch übernommen (sonst wird das mitgelieferte Vereinslogo gezeigt).
 3. Menüs wie bei HybridMag unter Design → Menüs pflegen. Positionen:
    * Hauptmenü (Kopfbereich) – heißt intern wie bei HybridMag "primary"; die bisherige Zuordnung
@@ -34,6 +35,16 @@ Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.
 * Termine (Plugin „Simple Calendar“): Monats- und Listenansicht werden automatisch im Theme-Design
   gezeigt (assets/css/simple-calendar.css, inkl. Dunkelmodus und Handy). Nichts einzustellen.
 * Schriften (Inter, Barlow Condensed) sind lokal eingebunden – keine Verbindung zu Google (DSGVO).
+
+== Versionierung & GitHub ==
+* Die Versionsnummer steht nur im Kopf von style.css (Zeile „Version:“). Änderungen in CHANGELOG.md.
+* Privates Repository: https://github.com/jurgpi/rv-sulz-theme
+  Die Git-Datenbank liegt außerhalb von OneDrive (C:\Users\juergen\git\rv-sulz-theme.git).
+* Neue Version (im Ordner CustomTemplate):
+  1. powershell -ExecutionPolicy Bypass -File tools\build.ps1 -Bump patch   (bzw. minor / major)
+  2. CHANGELOG.md ausfüllen, testen
+  3. powershell -ExecutionPolicy Bypass -File tools\build.ps1 -Force -Release -Push
+     → ZIP in dist\, Commit „Version x.y.z“, Tag vx.y.z, Upload zu GitHub.
 
 == Lizenz ==
 GPL v2 oder später. Schriften: SIL Open Font License.
