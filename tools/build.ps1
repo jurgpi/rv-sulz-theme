@@ -3,9 +3,9 @@
 
   Aufruf (im Ordner CustomTemplate):
     powershell -ExecutionPolicy Bypass -File tools\build.ps1                 # aktuelle Version bauen
-    powershell -ExecutionPolicy Bypass -File tools\build.ps1 -Bump patch     # 1.4.5 -> 1.4.6 (Fehlerbehebung)
-    powershell -ExecutionPolicy Bypass -File tools\build.ps1 -Bump minor     # 1.4.5 -> 1.5.0 (neue Funktion)
-    powershell -ExecutionPolicy Bypass -File tools\build.ps1 -Bump major     # 1.4.5 -> 2.0.0 (grosser Umbau)
+    powershell -ExecutionPolicy Bypass -File tools\build.ps1 -Bump patch     # 1.5.0 -> 1.5.1 (Fehlerbehebung)
+    powershell -ExecutionPolicy Bypass -File tools\build.ps1 -Bump minor     # 1.5.0 -> 1.6.0 (neue Funktion)
+    powershell -ExecutionPolicy Bypass -File tools\build.ps1 -Bump major     # 1.5.0 -> 2.0.0 (grosser Umbau)
 
   - Die Version steht nur im Kopf von rv-sulz\style.css.
   - Bei -Bump wird in CHANGELOG.md ein neuer Abschnitt angelegt (bitte danach ausfuellen).
@@ -16,7 +16,8 @@
 
   Git (optional):
     ... build.ps1 -Release          # alle Aenderungen als "Version x.y.z" committen + Tag vx.y.z
-    ... build.ps1 -Release -Push    # zusaetzlich zu GitHub hochladen (Commit + Tag)
+    ... build.ps1 -Release -Push    # zusaetzlich zu GitHub hochladen (Commit + Tag + Release mit ZIP)
+    ... build.ps1 -Force -GitHubRelease  # nur GitHub-Release fuer die aktuelle Version nachholen
   Typischer Ablauf fuer eine neue Version:
     1. build.ps1 -Bump patch        (Version erhoehen, CHANGELOG-Abschnitt anlegen)
     2. CHANGELOG.md ausfuellen, testen
@@ -27,8 +28,90 @@ param(
   [string]$Bump = 'none',
   [switch]$Force,
   [switch]$Release,
-  [switch]$Push
+  [switch]$Push,
+  [switch]$GitHubRelease
 )
+
+<#
+  GitHub-Release mit dem ZIP als Anhang anlegen (oder aktualisieren).
+  Das Theme laedt Updates aus diesem Anhang (inc/updater.php).
+  Der GitHub-Zugang kommt aus der gespeicherten Git-Anmeldung (Git Credential Manager)
+  und wird nie ausgegeben.
+#>
+function Publish-GitHubRelease {
+  param([string]$Root, [string]$Version, [string]$Tag, [string]$ZipPath, [string]$ChangelogPath)
+
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+  $remote = (git -C $Root remote get-url origin).Trim()
+  $m = [regex]::Match($remote, 'github\.com[/:]([^/]+/[^/]+?)(\.git)?$')
+  if (-not $m.Success) { throw "Remote ist kein GitHub-Repository: $remote" }
+  $slug = $m.Groups[1].Value
+
+  # Token aus dem Git Credential Manager (ohne Rueckfrage). Die Anfrage geht ueber eine
+  # Datei an git, weil PowerShell 5.1 Pipe/stdin fuer git unbrauchbar veraendert.
+  # Die Datei enthaelt nur die Anfrage (Protokoll + Host), nie den Token.
+  $env:GCM_INTERACTIVE = 'never'; $env:GIT_TERMINAL_PROMPT = '0'
+  $req = Join-Path $env:TEMP ("credreq-" + [guid]::NewGuid().ToString('N') + '.txt')
+  [IO.File]::WriteAllBytes($req, [Text.Encoding]::ASCII.GetBytes("protocol=https`nhost=github.com`n`n"))
+  try { $credOut = cmd /c "git credential fill < `"$req`" 2>nul" } finally { Remove-Item $req -Force -ErrorAction SilentlyContinue }
+  $token = ($credOut | Where-Object { $_ -like 'password=*' } | Select-Object -First 1)
+  if (-not $token) { throw 'Keine gespeicherte GitHub-Anmeldung gefunden (einmal git push im Terminal ausfuehren).' }
+  $token = $token.Substring(9)
+
+  $headers = @{
+    'Authorization'        = "Bearer $token"
+    'Accept'               = 'application/vnd.github+json'
+    'X-GitHub-Api-Version' = '2022-11-28'
+    'User-Agent'           = 'theme-build-script'
+  }
+
+  # Release-Text = Abschnitt dieser Version aus CHANGELOG.md
+  $notes = ''
+  if (Test-Path $ChangelogPath) {
+    $cl = [IO.File]::ReadAllText($ChangelogPath, (New-Object Text.UTF8Encoding $false))
+    $start = $cl.IndexOf("## [$Version]")
+    if ($start -ge 0) {
+      $next = $cl.IndexOf("`n## [", $start + 5)
+      $section = if ($next -gt 0) { $cl.Substring($start, $next - $start) } else { $cl.Substring($start) }
+      $notes = ($section -split "`n", 2)[1].Trim()
+    }
+  }
+
+  $api = "https://api.github.com/repos/$slug"
+  $release = $null
+  try { $release = Invoke-RestMethod -Method Get -Uri "$api/releases/tags/$Tag" -Headers $headers } catch { $release = $null }
+
+  if (-not $release) {
+    $payload = @{ tag_name = $Tag; name = "Version $Version"; body = $notes; draft = $false; prerelease = $false } | ConvertTo-Json
+    $bytes = [Text.Encoding]::UTF8.GetBytes($payload)
+    $release = Invoke-RestMethod -Method Post -Uri "$api/releases" -Headers $headers -Body $bytes -ContentType 'application/json; charset=utf-8'
+    Write-Host "GitHub-Release angelegt: Version $Version"
+  } else {
+    Write-Host "GitHub-Release $Tag gibt es schon - Anhang wird aktualisiert."
+  }
+
+  $assetName = Split-Path $ZipPath -Leaf
+  foreach ($a in @($release.assets)) {
+    if ($a -and $a.name -eq $assetName) {
+      Invoke-RestMethod -Method Delete -Uri "$api/releases/assets/$($a.id)" -Headers $headers | Out-Null
+    }
+  }
+  $uploadUri = "https://uploads.github.com/repos/$slug/releases/$($release.id)/assets?name=$assetName"
+  # Direkt nach dem Anlegen kennt der Upload-Server das Release manchmal noch nicht -> wiederholen
+  $asset = $null
+  for ($try = 1; $try -le 5 -and -not $asset; $try++) {
+    try {
+      $asset = Invoke-RestMethod -Method Post -Uri $uploadUri -Headers $headers -InFile $ZipPath -ContentType 'application/zip'
+    } catch {
+      if ($try -eq 5) { throw }
+      Write-Host "Upload noch nicht moeglich (Versuch $try) - neuer Versuch in 3 Sekunden ..."
+      Start-Sleep -Seconds 3
+    }
+  }
+  Write-Host ("ZIP angehaengt: {0} ({1} KB)" -f $asset.name, [math]::Round($asset.size / 1KB))
+  Write-Host ("Release: " + $release.html_url)
+}
 
 $ErrorActionPreference = 'Stop'
 $name   = 'rv-sulz'
@@ -88,6 +171,11 @@ try {
 }
 Write-Host ("Gebaut: dist\$name-$version.zip (" + [math]::Round((Get-Item $zipPath).Length / 1KB) + ' KB)')
 
+if ($GitHubRelease -and -not $Push) {
+  # Nur das GitHub-Release fuer die aktuelle (bereits gepushte) Version anlegen/aktualisieren
+  Publish-GitHubRelease -Root $root -Version $version -Tag "v$version" -ZipPath $zipPath -ChangelogPath $log
+}
+
 if ($Release -or $Push) {
   if (-not (Get-Command git -ErrorAction SilentlyContinue)) { throw 'Git ist nicht installiert.' }
   $tag = "v$version"
@@ -115,5 +203,6 @@ if ($Release -or $Push) {
     git -C $root push origin HEAD --follow-tags
     if ($LASTEXITCODE -ne 0) { throw 'Hochladen zu GitHub fehlgeschlagen.' }
     Write-Host 'Zu GitHub hochgeladen.'
+    Publish-GitHubRelease -Root $root -Version $version -Tag $tag -ZipPath $zipPath -ChangelogPath $log
   }
 }

@@ -8,6 +8,16 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.5.0] – 2026-11-19
+### Neu
+- Updates direkt aus GitHub: Das Theme meldet neue Versionen unter Dashboard → Aktualisierungen
+  (WordPress-Schnittstelle „Update URI“, kein Plugin). Quelle ist das ZIP im neuesten
+  GitHub-Release; für das private Repository Lese-Token `RV_SULZ_GITHUB_TOKEN` in `wp-config.php`.
+- Build-Skript: `-Push` legt zusätzlich das GitHub-Release mit ZIP an; `-GitHubRelease` holt
+  ein Release für die aktuelle Version nach.
+### Geändert
+- Theme-Autor im Kopf von `style.css` ist jetzt der Verein statt einer Person.
+
 ## [1.4.6] – 2026-11-19
 ### Geändert
 - Versionierung eingeführt: Version wird nur noch in `style.css` gepflegt

@@ -46,5 +46,17 @@ Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.
   3. powershell -ExecutionPolicy Bypass -File tools\build.ps1 -Force -Release -Push
      → ZIP in dist\, Commit „Version x.y.z“, Tag vx.y.z, Upload zu GitHub.
 
+== Updates direkt aus GitHub (ab 1.5.0) ==
+* Das Theme meldet neue Versionen unter Dashboard → Aktualisierungen – Update mit einem Klick.
+  Quelle ist das ZIP im neuesten GitHub-Release (legt tools\build.ps1 … -Push automatisch an).
+* Privates Repository → Lese-Token in wp-config.php (über „That's all, stop editing!“):
+    define( 'RV_SULZ_GITHUB_TOKEN', 'github_pat_HIER_DEN_TOKEN_EINFUEGEN' );
+  Token auf GitHub: Settings → Developer settings → Fine-grained tokens → Only select repositories:
+  rv-sulz-theme → Repository permissions: Contents = Read-only.
+* Öffentliches Repository → kein Token nötig.
+* Probleme zeigt WordPress als gelben Hinweis auf der Themes-/Aktualisierungen-Seite.
+* Achtung: Sind automatische Theme-Updates eingeschaltet, geht jedes veröffentlichte Release
+  innerhalb von ca. 12 Stunden von selbst live.
+
 == Lizenz ==
 GPL v2 oder später. Schriften: SIL Open Font License.

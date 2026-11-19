@@ -83,6 +83,7 @@ add_filter( 'do_shortcode_tag', 'rv_sulz_simcal_clean', 10, 2 );
 require_once get_template_directory() . '/inc/menus.php';
 require_once get_template_directory() . '/inc/frontpage.php';
 require_once get_template_directory() . '/inc/footer.php';
+require_once get_template_directory() . '/inc/updater.php';
 
 /**
  * Dunkelmodus: früh im <head>, damit beim Laden nichts hell aufblitzt.
