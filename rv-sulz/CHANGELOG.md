@@ -8,6 +8,12 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.6.1] – 2026-11-19
+### Behoben
+- Update-Prüfung: „Erneut überprüfen“ unter Dashboard → Aktualisierungen holt den neuesten
+  GitHub-Release jetzt sofort. Bisher konnte ein neues Release bis zu einer Stunde lang
+  unsichtbar bleiben, weil die gespeicherte Antwort von GitHub nicht verworfen wurde.
+
 ## [1.6.0] – 2026-11-19
 ### Neu
 - Durchsuchbares Archiv: Block „RV Sulz: Archiv“ (auch als Shortcode `[rv_archiv]`) mit

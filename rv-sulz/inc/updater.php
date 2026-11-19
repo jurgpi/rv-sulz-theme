@@ -126,6 +126,23 @@ function rv_sulz_updater_latest() {
 }
 
 /**
+ * „Erneut überprüfen“ (Dashboard → Aktualisierungen, ?force-check=1) wirklich frisch prüfen:
+ * Vor der Update-Prüfung von WordPress (Priorität 10) den eigenen GitHub-Zwischenspeicher und
+ * den Theme-Update-Speicher von WordPress leeren. So greift die Prüfung auch dann, wenn
+ * WordPress sie nicht in dieser Seitenanfrage ausführt oder kurz zuvor schon geprüft hat.
+ */
+add_action(
+	'load-update-core.php',
+	function () {
+		if ( isset( $_GET['force-check'] ) && current_user_can( 'update_themes' ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+			delete_site_transient( 'rv_sulz_updater_release' );
+			delete_site_transient( 'update_themes' );
+		}
+	},
+	1
+);
+
+/**
  * WordPress fragt nach einem Update für Themes mit „Update URI: https://github.com/…“.
  */
 add_filter(
