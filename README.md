@@ -19,6 +19,7 @@ Modernes Vereinsdesign in Enzian-Blau, viele Einstellungen im Customizer, Dunkel
 - **Seiten /kunstrad/ und /radball/** mit automatisch den neuesten Beiträgen der Kategorie.
 - **Menüs und Fußbereich klassisch verwaltbar**: Pflege unter *Design → Menüs* und *Design → Widgets*,
   die Menü-Zuordnung bleibt beim Theme-Wechsel erhalten.
+- **Durchsuchbares Archiv** unter /archiv/: Jahres-Leiste, Filter nach Sparte, Suche und Beitragskarten mit Bild.
 - **Updates direkt aus GitHub**: WordPress meldet neue Versionen, Update mit einem Klick.
 - **Dunkelmodus** nach Geräteeinstellung plus Umschalter, weißes Logo im Dunkelmodus.
 - **Termine** aus dem Plugin „Simple Calendar“ im Theme-Design (Monats- und Listenansicht).

@@ -8,6 +8,16 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.6.0] – 2026-11-19
+### Neu
+- Durchsuchbares Archiv: Block „RV Sulz: Archiv“ (auch als Shortcode `[rv_archiv]`) mit
+  Jahres-Leiste samt Beitragsanzahl, Filter nach Sparte (Kategorie), Suchfeld und Beitragskarten
+  mit Bild. Filter und „Mehr laden“ ohne Neuladen der Seite; ohne JavaScript über normale Links.
+- Vorlage `page-archiv` für die Seite /archiv/: zeigt das neue Archiv automatisch; der alte
+  Block „Archiv“ (Jahresliste) wird dort ausgeblendet.
+
+ 
+
 ## [1.5.1] – 2026-11-19
 ### Geändert
 - Beschreibungen ohne Verweise auf andere Themes: README/GitHub-Startseite, readme.txt und

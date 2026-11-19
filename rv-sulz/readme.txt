@@ -32,6 +32,11 @@ Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.
   - Auf dem Handy werden die Spalten 2 und 3 ausgeblendet (dort gibt es das Hauptmenü oben).
 * Dunkelmodus: folgt automatisch der Geräteeinstellung; Besucher können oben per Mond/Sonne-Knopf umschalten
   (Wahl wird nur im Browser gespeichert, kein Cookie). Im Dunkelmodus erscheint das weiße Logo.
+* Archiv (Seite /archiv/, Vorlage page-archiv): Jahres-Leiste mit Anzahl, Filter nach Sparte, Suche,
+  Beitragskarten mit Bild und „Mehr laden“. Auch auf anderen Seiten einsetzbar: Block „RV Sulz: Archiv“
+  (Beiträge pro Seite, Suchfeld ein/aus) oder Shortcode [rv_archiv anzahl="12" suche="ja"].
+  Sparten = alle Kategorien mit Beiträgen („Allgemein“ zuletzt). Adressen wie /archiv/?jahr=2024&sparte=radball
+  lassen sich verlinken.
 * Termine (Plugin „Simple Calendar“): Monats- und Listenansicht werden automatisch im Theme-Design
   gezeigt (assets/css/simple-calendar.css, inkl. Dunkelmodus und Handy). Nichts einzustellen.
 * Schriften (Inter, Barlow Condensed) sind lokal eingebunden – keine Verbindung zu Google (DSGVO).

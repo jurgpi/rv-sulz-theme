@@ -84,6 +84,7 @@ require_once get_template_directory() . '/inc/menus.php';
 require_once get_template_directory() . '/inc/frontpage.php';
 require_once get_template_directory() . '/inc/footer.php';
 require_once get_template_directory() . '/inc/updater.php';
+require_once get_template_directory() . '/inc/archiv.php';
 
 /**
  * Dunkelmodus: früh im <head>, damit beim Laden nichts hell aufblitzt.
