@@ -1,0 +1,356 @@
+/*
+Theme Name: RV Sulz
+Theme URI: https://wordpress.rv-sulz.at/
+Author: RV Enzian Sulz
+Description: Modernes Block-Theme für den Radfahrverein ÖAMTC "Enzian" Sulz – Kunstrad, Radball und Wanderfahren. Enzianblau und Wappengrün, selbst gehostete Schriften (DSGVO-freundlich), voll im Website-Editor anpassbar.
+Version: 1.4.5
+Requires at least: 6.6
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: rv-sulz
+Tags: block-patterns, full-site-editing, custom-logo, custom-colors, editor-style, sports, two-columns, wide-blocks
+*/
+
+/* Die meisten Stile stehen in theme.json. Hier nur, was theme.json (noch) nicht kann. */
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+
+/* ---------- Header ---------- */
+.rv-header {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	backdrop-filter: saturate(160%) blur(10px);
+	-webkit-backdrop-filter: saturate(160%) blur(10px);
+	background: color-mix(in srgb, var(--wp--preset--color--base) 88%, transparent) !important;
+	border-bottom: 1px solid var(--wp--preset--color--line);
+}
+.admin-bar .rv-header { top: 32px; }
+@media (max-width: 782px) { .admin-bar .rv-header { top: 46px; } }
+
+.rv-topbar a { color: inherit; text-decoration: none; }
+.rv-topbar a:hover { text-decoration: underline; }
+
+.rv-brand { gap: .75rem; }
+.rv-brand img, .rv-brand .wp-block-site-logo img { display: block; height: auto; }
+.rv-brand .wp-block-site-title a { text-decoration: none; }
+.rv-brand__tag { line-height: 1.1; }
+
+.rv-header .wp-block-navigation a { position: relative; text-decoration: none; }
+.rv-header .wp-block-navigation .wp-block-navigation-item__content::after {
+	content: "";
+	position: absolute; left: 0; right: 0; bottom: -6px;
+	height: 3px; border-radius: 3px;
+	background: var(--wp--preset--color--enzian);
+	transform: scaleX(0); transform-origin: left;
+	transition: transform .25s ease;
+}
+.rv-header .wp-block-navigation .wp-block-navigation-item__content:hover::after,
+.rv-header .wp-block-navigation .current-menu-item > .wp-block-navigation-item__content::after { transform: scaleX(1); }
+.rv-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content::after { display: none; }
+
+/* ---------- Hero ---------- */
+.rv-hero { position: relative; overflow: hidden; }
+.rv-hero::before {
+	content: "";
+	position: absolute; inset: 0;
+	background: url("assets/images/court-lines.svg") right -6% center / auto 115% no-repeat;
+	opacity: .09;
+	pointer-events: none;
+}
+.rv-hero > * { position: relative; }
+.rv-hero h1 em, .rv-hero .rv-accent { font-style: italic; color: var(--wp--preset--color--himmel); }
+.rv-kicker {
+	display: inline-flex; align-items: center; gap: .5rem;
+	letter-spacing: .14em; text-transform: uppercase;
+}
+.rv-kicker::before { content: ""; width: 28px; height: 3px; border-radius: 3px; background: currentColor; }
+
+/* ---------- Karten ---------- */
+.rv-card {
+	height: 100%;
+	transition: transform .25s ease, box-shadow .25s ease;
+	overflow: hidden;
+}
+.rv-card:hover { transform: translateY(-4px); box-shadow: var(--wp--preset--shadow--lift); }
+.rv-card .wp-block-post-featured-image img { transition: transform .5s ease; }
+.rv-card:hover .wp-block-post-featured-image img { transform: scale(1.04); }
+.rv-card .wp-block-post-title a { text-decoration: none; }
+.rv-card .wp-block-post-title a::after { content: ""; position: absolute; inset: 0; } /* ganze Karte klickbar */
+.rv-card { position: relative; }
+
+.rv-sparte__icon { width: 56px; height: 56px; }
+.rv-sparte__icon img { width: 56px; height: 56px; }
+
+/* Sparten-Karten: farbiger Streifen oben */
+.rv-sparte { border-top: 5px solid var(--wp--preset--color--enzian) !important; }
+.rv-sparte.is-dark { border-top-color: var(--wp--preset--color--enzian-dunkel) !important; }
+.rv-sparte.is-navy { border-top-color: var(--wp--preset--color--nacht) !important; }
+
+/* Datum-Badge in News */
+.rv-date-badge {
+	display: inline-block;
+	padding: .25rem .6rem;
+	border-radius: 999px;
+	background: var(--wp--preset--color--enzian-hell);
+	color: var(--wp--preset--color--enzian);
+	font-weight: 600;
+}
+
+/* Sponsoren */
+.rv-sponsors .wp-block-image img {
+	filter: grayscale(1);
+	opacity: .75;
+	transition: filter .3s ease, opacity .3s ease;
+	max-height: 64px; width: auto; object-fit: contain;
+}
+.rv-sponsors .wp-block-image img:hover { filter: none; opacity: 1; }
+
+/* Diagonaler Abschluss für Bänder */
+.rv-slant { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%); padding-bottom: calc(var(--wp--preset--spacing--70) + 40px) !important; }
+.rv-slant-top { clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%); padding-top: calc(var(--wp--preset--spacing--70) + 40px) !important; }
+
+/* Footer */
+.rv-footer a { color: inherit; text-decoration: none; }
+.rv-footer a:hover { color: var(--wp--preset--color--base); text-decoration: underline; }
+.rv-footer .wp-block-navigation a { opacity: .85; }
+
+/* Fokus sichtbar für Tastaturbedienung */
+:where(a, button, input, .wp-element-button):focus-visible {
+	outline: 3px solid var(--wp--preset--color--himmel);
+	outline-offset: 2px;
+}
+
+/* The Events Calendar – an Farben anpassen */
+.tribe-common, .tribe-events { --tec-color-accent-primary: var(--wp--preset--color--enzian); --tec-color-button-primary: var(--wp--preset--color--enzian); }
+
+/* ---------- Top-Beiträge (Cover-Kacheln) ---------- */
+.rv-tile { overflow: hidden; isolation: isolate; }
+.rv-tile::after {
+	content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+	background: linear-gradient(180deg, rgba(12,30,68,0) 35%, rgba(12,30,68,.88) 100%);
+}
+.rv-tile .wp-block-cover__image-background { transition: transform .6s ease; }
+.rv-tile:hover .wp-block-cover__image-background { transform: scale(1.04); }
+.rv-tile .wp-block-cover__inner-container { z-index: 1; }
+.rv-tile .wp-block-post-title { margin: .35rem 0 .25rem; text-shadow: 0 2px 12px rgba(0,0,0,.35); }
+.rv-tile .wp-block-post-title a::after { content: ""; position: absolute; inset: 0; }
+.rv-tile:not(:has(img)) { background: var(--wp--preset--gradient--enzian-nacht); }
+
+/* Kategorie-Pill */
+.rv-pill a, .rv-tile .wp-block-post-terms a {
+	display: inline-block; padding: .2rem .65rem; border-radius: 999px;
+	background: var(--wp--preset--color--enzian); color: #fff !important;
+	font-size: .72rem; letter-spacing: .1em;
+}
+.rv-pill .wp-block-post-terms__separator, .rv-tile .wp-block-post-terms__separator { display: none; }
+.rv-pill, .rv-tile .wp-block-post-terms { display: flex; gap: .35rem; flex-wrap: wrap; }
+
+/* Glas-Karten auf dunklem Band */
+.rv-glass {
+	background: rgba(255,255,255,.07);
+	border: 1px solid rgba(255,255,255,.16);
+	backdrop-filter: blur(6px);
+}
+.rv-glass:hover { box-shadow: 0 18px 40px rgba(0,0,0,.25); }
+
+/* Listen-Zeile (News nach Sparte) */
+.rv-row { border-radius: 14px; padding: .4rem; margin: -.4rem; }
+.rv-row:hover { background: var(--wp--preset--color--enzian-hell); transform: none; box-shadow: none; }
+.rv-row .wp-block-post-featured-image { flex-shrink: 0; margin: 0; overflow: hidden; }
+.rv-row .wp-block-post-featured-image img { object-fit: cover; }
+
+/* Beitragskarte */
+.rv-post-card { box-shadow: var(--wp--preset--shadow--soft); }
+.rv-post-card .wp-block-post-featured-image { margin: 0; overflow: hidden; width: 100%; }
+.rv-post-card .wp-block-post-excerpt__more-text { display: none; }
+.rv-post-card .wp-block-post-excerpt p { margin: 0; }
+
+/* Seitenkopf */
+.rv-pagehead h1 { margin: 0; }
+
+/* Navigation: Untermenüs */
+.rv-header .wp-block-navigation__submenu-container {
+	border: 0 !important;
+	border-radius: 12px; padding: .4rem !important;
+	box-shadow: var(--wp--preset--shadow--lift);
+	min-width: 220px !important;
+}
+.rv-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content { padding: .5rem .8rem !important; border-radius: 8px; }
+.rv-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover { background: rgba(255,255,255,.1); }
+.rv-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content::after { display: none; }
+.rv-header .wp-block-search__button { background: transparent; color: var(--wp--preset--color--enzian); border: 0; padding: .4rem; }
+
+@media (max-width: 781px) {
+	.rv-hide-mobile { display: none !important; }
+	.rv-tile--big { min-height: 360px !important; }
+}
+
+/* Seitennummerierung */
+.wp-block-query-pagination { gap: .5rem; font-family: var(--wp--preset--font-family--display); font-size: 1.15rem; }
+.wp-block-query-pagination-numbers { display: inline-flex; gap: .35rem; }
+.wp-block-query-pagination-numbers .page-numbers {
+	display: inline-grid; place-items: center; min-width: 2.4rem; height: 2.4rem; padding: 0 .5rem;
+	border-radius: 999px; text-decoration: none; background: var(--wp--preset--color--base); border: 1px solid var(--wp--preset--color--line);
+}
+.wp-block-query-pagination-numbers .page-numbers.current { background: var(--wp--preset--color--enzian); color: #fff; border-color: transparent; }
+.wp-block-query-pagination-numbers .page-numbers.dots { border: 0; background: none; }
+.wp-block-query-pagination a { text-decoration: none; }
+.rv-header .rv-brand img { width: 130px; height: auto; }
+@media (max-width: 781px) { .rv-header .rv-brand img { width: 96px; } }
+/* WP gibt Gruppen mit Hintergrund automatisch Innenabstand – bei Karten nicht gewünscht */
+.wp-block-group.rv-post-card.has-background { padding: 0 0 var(--wp--preset--spacing--40) !important; }
+/* backdrop-filter würde das mobile Vollbild-Menü im Header einsperren */
+.rv-header:has(.is-menu-open) { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--wp--preset--color--base) !important; }
+@media (max-width: 599px) { .rv-header { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--wp--preset--color--base) !important; } }
+.rv-header .wp-block-navigation__responsive-container.is-menu-open { padding-top: 4.5rem; }
+.rv-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item { font-size: 1.6rem; }
+.rv-header .is-menu-open .wp-block-navigation__submenu-container { border: 0 !important; box-shadow: none; padding: .25rem 0 0 1rem !important; background: transparent !important; }
+.rv-header .is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item { font-size: 1.2rem; opacity: .85; }
+.rv-header .is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover { background: transparent; }
+.rv-header .is-menu-open .wp-block-navigation__container,
+.rv-header .is-menu-open .wp-block-navigation-item { align-items: flex-start !important; }
+.rv-header .is-menu-open .wp-block-navigation__responsive-container-content { align-items: flex-start !important; padding-left: 1.5rem; }
+/* Nur für Screenreader/Suchmaschinen sichtbar */
+.rv-sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+/* Menü im Logoblau, Hover etwas dunkler; Untermenü-Fläche (nachtblau) bleibt weiße Schrift */
+.rv-header .wp-block-navigation .wp-block-navigation-item__content:hover { color: var(--wp--preset--color--enzian-dunkel); }
+.rv-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content,
+.rv-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover { color: #fff; }
+
+/* =========================================================
+   Kacheln: ganze Fläche klickbar
+   (Inner-Container ist sonst position:relative und begrenzt den Klickbereich)
+   ========================================================= */
+.rv-tile .wp-block-cover__inner-container { position: static; }
+.rv-tile .wp-block-cover__inner-container > * { position: relative; z-index: 2; }
+.rv-tile .wp-block-post-title { position: static !important; }
+.rv-tile .wp-block-post-title a::after { z-index: 1; }
+.rv-tile .wp-block-post-terms { z-index: 3; }
+.rv-tile { cursor: pointer; }
+
+/* =========================================================
+   Dunkelmodus-Umschalter
+   ========================================================= */
+.rv-theme-toggle {
+	display: inline-grid; place-items: center;
+	width: 38px; height: 38px; padding: 0; border-radius: 999px;
+	border: 1px solid var(--wp--preset--color--line); background: transparent;
+	color: var(--wp--preset--color--enzian); cursor: pointer;
+	transition: background .2s ease, color .2s ease;
+}
+.rv-theme-toggle:hover { background: var(--wp--preset--color--enzian-hell); }
+.rv-theme-toggle .rv-icon-sun { display: none; }
+.rv-dark .rv-theme-toggle .rv-icon-sun { display: block; }
+.rv-dark .rv-theme-toggle .rv-icon-moon { display: none; }
+.rv-logo-dark { display: none !important; }
+.rv-dark .rv-logo-dark { display: block !important; }
+.rv-dark .rv-logo-light { display: none !important; }
+.rv-brand-wrap { margin: 0; }
+
+/* =========================================================
+   Dunkelmodus (Klasse .rv-dark auf <html>, gesetzt per Skript)
+   Logoblau bleibt Hintergrundfarbe für Buttons/Bänder;
+   für Schrift auf dunklem Grund wird ein helleres Blau verwendet.
+   ========================================================= */
+html.rv-dark {
+	color-scheme: dark;
+	--rv-dark-bg: #0B1630;
+	--rv-dark-surface: #111F40;
+	--rv-dark-card: #15264D;
+	--rv-dark-text: #E3E9F5;
+	--rv-dark-muted: #A3AFC7;
+	--rv-dark-blue: #8FB3F2;
+	--wp--preset--color--flaeche: var(--rv-dark-surface);
+	--wp--preset--color--line: #26385F;
+	--wp--preset--color--kontrast: var(--rv-dark-text);
+	--wp--preset--color--grau: var(--rv-dark-muted);
+	--wp--preset--gradient--enzian-hell-verlauf: linear-gradient(180deg, #111F40 0%, #0B1630 100%);
+}
+html.rv-dark body { background: var(--rv-dark-bg); color: var(--rv-dark-text); }
+
+/* Schrift im hellen Blau statt Logoblau (Kontrast) */
+html.rv-dark :where(h1,h2,h3,h4,h5,h6):not(.has-text-color),
+html.rv-dark .wp-block-post-title a,
+html.rv-dark .wp-block-site-title a,
+html.rv-dark main a:not(.wp-element-button):not(.wp-block-button__link),
+html.rv-dark .rv-header .wp-block-navigation-item__content,
+html.rv-dark .rv-header .wp-block-search__button,
+html.rv-dark .rv-header .wp-social-link,
+html.rv-dark .rv-theme-toggle,
+html.rv-dark .wp-block-post-terms a,
+html.rv-dark .has-enzian-color { color: var(--rv-dark-blue) !important; }
+html.rv-dark .rv-header .wp-social-link svg { fill: currentColor; }
+html.rv-dark .rv-header .wp-block-navigation .wp-block-navigation-item__content::after { background: var(--rv-dark-blue); }
+html.rv-dark .rv-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content { color: #fff !important; }
+
+/* Weiße Schrift auf blauen Bändern bleibt weiß */
+html.rv-dark .rv-hero :where(h1,h2,h3).has-base-color,
+html.rv-dark .rv-tile .wp-block-post-title a,
+html.rv-dark .rv-cta h2,
+html.rv-dark .rv-glass h3 { color: #fff !important; }
+html.rv-dark .rv-tile .wp-block-post-terms a,
+html.rv-dark .rv-pill a { color: #fff !important; }
+
+/* Flächen */
+html.rv-dark .rv-header { background: rgba(11,22,48,.9) !important; border-bottom-color: #26385F; }
+html.rv-dark .rv-header:has(.is-menu-open) { background: var(--rv-dark-bg) !important; }
+@media (max-width: 599px) { html.rv-dark .rv-header { background: var(--rv-dark-bg) !important; } }
+html.rv-dark .rv-post-card { background: var(--rv-dark-card) !important; box-shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25); }
+html.rv-dark .rv-row:hover,
+html.rv-dark .rv-theme-toggle:hover { background: rgba(143,179,242,.12); }
+html.rv-dark .wp-block-query-pagination-numbers .page-numbers { background: var(--rv-dark-card); color: var(--rv-dark-text); }
+html.rv-dark .wp-block-query-pagination-numbers .page-numbers.current { background: var(--wp--preset--color--enzian); color: #fff; }
+html.rv-dark .wp-block-query-pagination a { color: var(--rv-dark-blue); }
+html.rv-dark .is-style-rv-karte { background: var(--rv-dark-card) !important; }
+html.rv-dark .wp-block-search__input { background: var(--rv-dark-card); color: var(--rv-dark-text); border-color: #26385F; }
+html.rv-dark .rv-date-badge { background: rgba(143,179,242,.15); color: var(--rv-dark-blue); }
+html.rv-dark .wp-block-separator { color: #26385F; }
+html.rv-dark .rv-tile:not(:has(img)) { background: var(--wp--preset--gradient--enzian-nacht); }
+html.rv-dark img { filter: brightness(.92); }
+html.rv-dark .rv-brand img, html.rv-dark .rv-footer img { filter: none; }
+html.rv-dark .rv-footer { background: linear-gradient(180deg, #060E22 0%, #040A18 100%) !important; }
+/* Weiße Schrift auf Bildkacheln/Pills hat Vorrang vor der hellblauen Link-Farbe */
+html.rv-dark main .rv-tile .wp-block-post-title a:not(.wp-element-button),
+html.rv-dark main .rv-tile .wp-block-post-terms a:not(.wp-element-button),
+html.rv-dark main .rv-pill a:not(.wp-element-button) { color: #fff !important; }
+/* Logo-Wechsel hell/dunkel ohne Höhensprung: kein Blockabstand, beide Logos gleich dargestellt */
+.rv-brand-wrap > * { margin-block: 0 !important; }
+.rv-brand-wrap .rv-logo-light { display: block; }
+.rv-brand-wrap .rv-brand img { display: block; }
+
+/* Fußmenü (Sport/Verein) auf dem Handy ausblenden – dort gibt es das Hauptmenü oben */
+@media (max-width: 781px) {
+	.rv-footer .rv-footer-menu { display: none !important; }
+}
+
+/* Hauptpunkt (z. B. „Radball“) im Desktop-Aufklappmenü nochmals als ersten Unterpunkt zeigen,
+   im geöffneten Handy-Menü aber ausblenden – dort ist der Hauptpunkt selbst schon anklickbar. */
+.wp-block-navigation__responsive-container.is-menu-open .rv-nav-parent { display: none !important; }
+
+/* Widgets im Fußbereich (Design → Widgets „Fußbereich 1–4“) */
+.rv-footer .rv-widget + .rv-widget { margin-top: var(--wp--preset--spacing--40); }
+.rv-footer .rv-widget-title {
+	margin: 0 0 0.9rem;
+	color: #fff;
+	font-family: var(--wp--preset--font-family--display, inherit);
+	font-size: 1.25rem;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+}
+.rv-footer .rv-widget ul { list-style: none; margin: 0; padding: 0; font-size: 0.95rem; }
+.rv-footer .rv-widget li { margin: 0 0 0.5rem; }
+.rv-footer .rv-widget li ul { margin: 0.5rem 0 0 1rem; }
+.rv-footer .rv-widget p { font-size: 0.95rem; }
+.rv-footer .rv-widget a { color: #fff; font-weight: 400; text-decoration: none; }
+html.rv-dark .rv-footer .rv-widget-title, html.rv-dark .rv-footer .rv-widget a { color: #fff !important; }
+.rv-footer .rv-widget a:hover { text-decoration: underline; }
+.rv-footer .rv-widget img { max-width: 100%; height: auto; }
+
+/* Sind „Sport“/„Verein“ ausgeblendet: „Mitmachen“ nicht über die ganze Breite ziehen, sondern rechts */
+@media (min-width: 782px) {
+	.rv-footer .rv-fcol-4 { max-width: 22rem; margin-left: auto; }
+}

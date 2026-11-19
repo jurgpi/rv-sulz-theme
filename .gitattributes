@@ -1,0 +1,6 @@
+# Einheitliche Zeilenenden im Repository, Windows-Zeilenenden im Arbeitsordner
+* text=auto
+*.png binary
+*.jpg binary
+*.woff2 binary
+*.zip binary

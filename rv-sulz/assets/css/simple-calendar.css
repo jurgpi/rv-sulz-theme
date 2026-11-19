@@ -1,0 +1,339 @@
+/* =========================================================
+   Simple Calendar (Plugin „google-calendar-events“) im RV-Sulz-Design
+   Monatsansicht (Grid), Listenansicht und Tooltip.
+   Das Plugin setzt Farben teils inline (style="…"), daher !important.
+   ========================================================= */
+
+.simcal-calendar.simcal-default-calendar {
+	--rv-cal-blue: var(--wp--preset--color--enzian, #1F4D9A);
+	--rv-cal-blue-text: var(--wp--preset--color--enzian, #1F4D9A);
+	--rv-cal-soft: var(--wp--preset--color--enzian-hell, #E8EFFA);
+	--rv-cal-cell: var(--wp--preset--color--flaeche, #F3F6FB);
+	--rv-cal-card: #fff;
+	--rv-cal-line: var(--wp--preset--color--line, #DDE3EE);
+	--rv-cal-text: var(--wp--preset--color--kontrast, #14213D);
+	--rv-cal-muted: var(--wp--preset--color--grau, #5A6478);
+	font-family: inherit;
+	color: var(--rv-cal-text);
+	margin-block: var(--wp--preset--spacing--40, 1.5rem);
+}
+html.rv-dark .simcal-calendar.simcal-default-calendar {
+	--rv-cal-blue-text: var(--rv-dark-blue, #8FB3F2);
+	--rv-cal-soft: #1C3366;
+	--rv-cal-cell: var(--rv-dark-surface, #111F40);
+	--rv-cal-card: var(--rv-dark-card, #15264D);
+	--rv-cal-line: #26385F;
+	--rv-cal-text: var(--rv-dark-text, #E3E9F5);
+	--rv-cal-muted: var(--rv-dark-muted, #A3AFC7);
+}
+
+/* ---------- Kopf: Monat + Vor/Zurück ---------- */
+.simcal-default-calendar .simcal-current h3,
+.simcal-default-calendar .simcal-current-label {
+	margin: 0 !important;
+	font-family: var(--wp--preset--font-family--display, inherit);
+	font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem) !important;
+	font-weight: 800;
+	line-height: 1.1;
+	text-transform: uppercase;
+	letter-spacing: .02em;
+	color: var(--rv-cal-blue-text) !important;
+}
+.simcal-default-calendar .simcal-nav { padding: 0 0 1rem !important; vertical-align: middle; border: 0 !important; background: none !important; }
+.simcal-default-calendar .simcal-nav-button {
+	display: inline-grid;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0 !important;
+	border: 0 !important;
+	border-radius: 999px !important;
+	background: var(--rv-cal-blue) !important;
+	color: #fff !important;
+	font-size: 1rem;
+	line-height: 1;
+	cursor: pointer;
+	box-shadow: 0 6px 16px rgba(31, 77, 154, .25);
+	transition: transform .2s ease, background-color .2s ease;
+}
+.simcal-default-calendar .simcal-nav-button:hover,
+.simcal-default-calendar .simcal-nav-button:focus-visible { background: var(--wp--preset--color--enzian-dunkel, #153B7A) !important; transform: translateY(-2px); }
+.simcal-default-calendar .simcal-nav-button:focus-visible { outline: 3px solid var(--rv-cal-soft); outline-offset: 2px; }
+.simcal-default-calendar .simcal-nav-button.simcal-nav-disabled,
+.simcal-default-calendar .simcal-nav-button[disabled] { opacity: .35; cursor: default; transform: none; box-shadow: none; }
+.simcal-default-calendar .simcal-nav-button i { display: block; width: .6rem; height: .6rem; font-size: 0 !important; color: inherit !important; }
+/* Eigene Pfeile statt Icon-Schrift des Plugins */
+.simcal-default-calendar .simcal-nav-button i::before {
+	content: "" !important;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-top: 2.5px solid currentColor;
+	border-right: 2.5px solid currentColor;
+	box-sizing: border-box;
+}
+.simcal-default-calendar .simcal-nav-button .simcal-icon-left::before { transform: translateX(15%) rotate(-135deg); }
+.simcal-default-calendar .simcal-nav-button .simcal-icon-right::before { transform: translateX(-15%) rotate(45deg); }
+
+/* Bearbeiten-Link und „Powered by“ dezent */
+.simcal-default-calendar > .simcal-align-right small,
+.simcal-default-calendar .simcal-powered { font-size: .75rem; color: var(--rv-cal-muted); }
+.simcal-default-calendar .simcal-powered { display: block; margin-top: .75rem; }
+.simcal-default-calendar .simcal-powered a,
+.simcal-default-calendar > .simcal-align-right a { color: inherit !important; }
+
+/* ---------- Monatsansicht ---------- */
+.simcal-default-calendar-grid .simcal-calendar-grid {
+	width: 100%;
+	margin: 0;
+	border: 0 !important;
+	border-collapse: separate !important;
+	border-spacing: 6px !important;
+	table-layout: fixed;
+	background: none !important;
+}
+.simcal-default-calendar-grid .simcal-calendar-grid :is(td, th) { border: 0 !important; background: none; }
+.simcal-default-calendar-grid .simcal-week-day {
+	padding: .25rem 0 !important;
+	font-size: .78rem !important;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	text-align: center;
+	color: var(--rv-cal-muted) !important;
+}
+.simcal-default-calendar-grid .simcal-day,
+.simcal-default-calendar-grid .simcal-day:hover { padding: 0 !important; vertical-align: top; background: none !important; }
+.simcal-default-calendar-grid .simcal-day-has-events:hover > div { box-shadow: 0 10px 24px rgba(20, 33, 61, .14); }
+.simcal-default-calendar-grid .simcal-day > div {
+	box-sizing: border-box;
+	min-height: 6.5rem;
+	height: 100%;
+	padding: .45rem !important;
+	border: 2px solid transparent !important;
+	border-radius: 14px;
+	background: var(--rv-cal-cell);
+	transition: background-color .2s ease, box-shadow .2s ease;
+}
+.simcal-default-calendar-grid .simcal-day-void > div,
+.simcal-default-calendar-grid .simcal-day-void { background: none !important; }
+.simcal-default-calendar-grid .simcal-past > div { opacity: .6; }
+.simcal-default-calendar-grid .simcal-day-has-events > div { background: var(--rv-cal-card); box-shadow: 0 4px 14px rgba(20, 33, 61, .08); }
+html.rv-dark .simcal-default-calendar-grid .simcal-day-has-events > div { box-shadow: none; }
+.simcal-default-calendar-grid .simcal-today > div {
+	border-color: var(--rv-cal-blue) !important;
+	opacity: 1;
+}
+html.rv-dark .simcal-default-calendar-grid .simcal-today > div { border-color: var(--rv-cal-blue-text) !important; }
+
+.simcal-default-calendar-grid .simcal-day-number {
+	display: inline-grid !important;
+	place-items: center;
+	float: none !important;
+	min-width: 1.85rem;
+	height: 1.85rem;
+	padding: 0 .3rem !important;
+	border-radius: 999px;
+	background: none !important;
+	color: var(--rv-cal-text) !important;
+	font-size: .9rem !important;
+	font-weight: 700;
+	line-height: 1 !important;
+}
+.simcal-default-calendar-grid .simcal-day-has-events .simcal-day-number { background: var(--rv-cal-blue) !important; color: #fff !important; }
+.simcal-default-calendar-grid .simcal-today .simcal-day-number { background: var(--rv-cal-soft) !important; color: var(--rv-cal-blue-text) !important; }
+.simcal-default-calendar-grid .simcal-today.simcal-day-has-events .simcal-day-number { background: var(--rv-cal-blue) !important; color: #fff !important; }
+
+.simcal-default-calendar-grid .simcal-events { list-style: none !important; margin: .35rem 0 0 !important; padding: 0 !important; }
+.simcal-default-calendar-grid .simcal-event {
+	margin: 0 0 .3rem !important;
+	padding: .25rem .45rem !important;
+	border-radius: 8px;
+	border-left: 3px solid var(--rv-cal-blue);
+	background: var(--rv-cal-soft) !important;
+	color: var(--rv-cal-blue-text) !important;
+	font-size: .78rem !important;
+	font-weight: 600;
+	line-height: 1.25 !important;
+	white-space: normal !important;
+	overflow-wrap: anywhere;
+	text-align: left;
+	cursor: pointer;
+	transition: background-color .2s ease, color .2s ease;
+}
+html.rv-dark .simcal-default-calendar-grid .simcal-event { border-left-color: var(--rv-cal-blue-text); }
+.simcal-default-calendar-grid .simcal-event:hover,
+.simcal-default-calendar-grid .simcal-event:focus-within { background: var(--rv-cal-blue) !important; color: #fff !important; }
+.simcal-default-calendar-grid .simcal-event > .simcal-event-title {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	color: inherit !important;
+}
+/* Punkte statt Titel (schmale Bildschirme, setzt das Plugin per Skript) */
+.simcal-default-calendar-grid .simcal-events-dots { display: block; margin-top: .3rem; line-height: 1; text-align: center; }
+.simcal-default-calendar-grid .simcal-event-color-dot,
+.simcal-default-calendar-grid .simcal-events-dots b {
+	display: inline-block;
+	width: .5rem;
+	height: .5rem;
+	margin: 0 1px;
+	border-radius: 50%;
+	background: var(--rv-cal-blue) !important;
+	color: transparent !important;
+	font-size: 0;
+}
+.simcal-default-calendar-grid .simcal-day-has-events .simcal-day-number { cursor: default; }
+
+@media (max-width: 781px) {
+	.simcal-default-calendar-grid .simcal-calendar-grid { border-spacing: 3px !important; }
+	.simcal-default-calendar-grid .simcal-day > div { min-height: 3.1rem; padding: .25rem !important; border-radius: 10px; text-align: center; }
+	.simcal-default-calendar-grid .simcal-day-number { min-width: 1.6rem; height: 1.6rem; font-size: .8rem !important; }
+	.simcal-default-calendar-grid .simcal-event { font-size: .7rem !important; padding: .2rem .3rem !important; text-align: left; }
+	.simcal-default-calendar .simcal-nav-button { width: 2.4rem; height: 2.4rem; }
+}
+
+/* ---------- Tooltip (qTip) in der Monatsansicht ---------- */
+.qtip.simcal-default-calendar,
+.qtip.qtip-default.simcal-qtip,
+.simcal-default-calendar ~ .qtip,
+body .qtip {
+	max-width: 340px;
+	border: 1px solid var(--wp--preset--color--line, #DDE3EE) !important;
+	border-radius: 16px !important;
+	background: #fff !important;
+	color: var(--wp--preset--color--kontrast, #14213D) !important;
+	box-shadow: 0 18px 40px rgba(12, 30, 68, .18) !important;
+	font-family: inherit;
+	font-size: .9rem;
+	line-height: 1.45;
+}
+body .qtip .qtip-content { padding: 1rem 1.1rem !important; }
+body .qtip .qtip-tip { display: none !important; }
+body .qtip .simcal-event-title {
+	display: block;
+	margin-bottom: .35rem;
+	font-family: var(--wp--preset--font-family--display, inherit);
+	font-size: 1.3rem;
+	line-height: 1.1;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--enzian, #1F4D9A);
+}
+body .qtip a { color: var(--wp--preset--color--enzian, #1F4D9A); font-weight: 700; }
+html.rv-dark body .qtip {
+	border-color: #26385F !important;
+	background: var(--rv-dark-card, #15264D) !important;
+	color: var(--rv-dark-text, #E3E9F5) !important;
+	box-shadow: 0 18px 40px rgba(0, 0, 0, .45) !important;
+}
+html.rv-dark body .qtip .simcal-event-title,
+html.rv-dark body .qtip a { color: var(--rv-dark-blue, #8FB3F2); }
+
+/* ---------- Gemeinsam: Termin-Details (Liste + Tooltip) ---------- */
+.simcal-event-details { font-size: .92rem; line-height: 1.5; }
+.simcal-event-details > strong { display: block; }
+.simcal-event-details .simcal-event-start-date,
+.simcal-event-details .simcal-event-start-time,
+.simcal-event-details .simcal-event-end-date,
+.simcal-event-details .simcal-event-end-time { font-weight: 600; }
+.simcal-event-details .simcal-event-address { display: block; margin-top: .2rem; color: var(--rv-cal-muted, #5A6478); }
+html.rv-dark body .qtip .simcal-event-address { color: var(--rv-dark-muted, #A3AFC7); }
+.simcal-event-details .simcal-event-address::before {
+	content: "";
+	display: inline-block;
+	width: .9em;
+	height: .9em;
+	margin-right: .35em;
+	vertical-align: -.1em;
+	background: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.simcal-event-details .simcal-event-description { margin-top: .5rem; }
+.simcal-event-details .simcal-event-description p { margin: 0 0 .4rem; }
+
+/* ---------- Listenansicht ---------- */
+.simcal-default-calendar-list .simcal-calendar-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: var(--wp--preset--spacing--40, 1.5rem);
+}
+.simcal-default-calendar-list .simcal-calendar-head .simcal-nav { padding: 0 !important; text-align: center; }
+.simcal-default-calendar-list .simcal-events-list-container { margin: 0; padding: 0; }
+.simcal-default-calendar-list dt.simcal-day-label {
+	margin: var(--wp--preset--spacing--40, 1.5rem) 0 .6rem !important;
+	padding: 0 !important;
+	border: 0 !important;
+	background: none !important;
+}
+.simcal-default-calendar-list dt.simcal-day-label:first-of-type { margin-top: 0 !important; }
+.simcal-default-calendar-list dt.simcal-day-label > span {
+	display: inline-block;
+	padding: .35rem .95rem !important;
+	border-radius: 999px;
+	background: var(--rv-cal-blue) !important;
+	color: #fff !important;
+	font-family: var(--wp--preset--font-family--display, inherit);
+	font-size: 1.05rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+}
+.simcal-default-calendar-list dd { margin: 0 !important; padding: 0 !important; }
+.simcal-default-calendar-list .simcal-events { list-style: none !important; margin: 0 !important; padding: 0 !important; }
+.simcal-default-calendar-list .simcal-event {
+	position: relative;
+	margin: 0 0 .75rem !important;
+	padding: 1.1rem 1.25rem 1.1rem 1.5rem !important;
+	border: 1px solid var(--rv-cal-line) !important;
+	border-radius: 18px;
+	background: var(--rv-cal-card) !important;
+	box-shadow: var(--wp--preset--shadow--soft, 0 6px 20px rgba(20, 33, 61, .07));
+	overflow: hidden;
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+.simcal-default-calendar-list .simcal-event::before {
+	content: "";
+	position: absolute;
+	inset: 0 auto 0 0;
+	width: 5px;
+	background: var(--rv-cal-blue);
+}
+.simcal-default-calendar-list .simcal-event:hover { transform: translateY(-2px); box-shadow: var(--wp--preset--shadow--lift, 0 14px 30px rgba(20, 33, 61, .12)); }
+html.rv-dark .simcal-default-calendar-list .simcal-event { box-shadow: none; }
+html.rv-dark .simcal-default-calendar-list .simcal-event::before { background: var(--rv-cal-blue-text); }
+.simcal-default-calendar-list .simcal-event-title {
+	display: block;
+	margin-bottom: .25rem;
+	font-family: var(--wp--preset--font-family--display, inherit);
+	font-size: 1.45rem;
+	font-weight: 800;
+	line-height: 1.1;
+	text-transform: uppercase;
+	color: var(--rv-cal-blue-text);
+}
+.simcal-default-calendar-list .simcal-event-details { color: var(--rv-cal-text); }
+.simcal-default-calendar-list .simcal-event-details a {
+	display: inline-block;
+	margin-top: .5rem;
+	font-size: .85rem;
+	font-weight: 700;
+	text-decoration: none;
+	color: var(--rv-cal-blue-text) !important;
+}
+.simcal-default-calendar-list .simcal-event-details a::after { content: " →"; }
+.simcal-default-calendar-list .simcal-event-details a:hover { text-decoration: underline; }
+/* Kein Abblenden in der Liste: das Plugin markiert dort auch kommende Termine als „past“. */
+
+/* Keine Termine */
+.simcal-default-calendar .simcal-no-events-message,
+.simcal-default-calendar-list .simcal-events-list-container > p {
+	padding: 1.25rem;
+	border-radius: 16px;
+	background: var(--rv-cal-cell);
+	color: var(--rv-cal-muted);
+	text-align: center;
+}

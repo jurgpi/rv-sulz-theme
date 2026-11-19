@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none" stroke="#ffffff">
+  <!-- Stilisiertes Rad als Hintergrundgrafik -->
+  <circle cx="300" cy="300" r="280" stroke-width="10"/>
+  <circle cx="300" cy="300" r="258" stroke-width="3"/>
+  <g stroke-width="3">
+    <line x1="300" y1="42" x2="300" y2="558"/>
+    <line x1="42" y1="300" x2="558" y2="300"/>
+    <line x1="117.6" y1="117.6" x2="482.4" y2="482.4"/>
+    <line x1="117.6" y1="482.4" x2="482.4" y2="117.6"/>
+    <line x1="201.3" y1="61.6" x2="398.7" y2="538.4"/>
+    <line x1="61.6" y1="201.3" x2="538.4" y2="398.7"/>
+    <line x1="61.6" y1="398.7" x2="538.4" y2="201.3"/>
+    <line x1="201.3" y1="538.4" x2="398.7" y2="61.6"/>
+  </g>
+  <circle cx="300" cy="300" r="26" stroke-width="8"/>
+</svg>

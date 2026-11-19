@@ -1,0 +1,45 @@
+<!-- wp:template-part {"slug":"header","tagName":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"0"},"blockGap":"0"}},"layout":{"type":"default"}} -->
+<main class="wp-block-group" style="margin-top:0">
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--70)">
+	<!-- wp:group {"style":{"spacing":{"blockGap":"0.75rem"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+	<div class="wp-block-group">
+		<!-- wp:post-terms {"term":"category","className":"rv-pill"} /-->
+		<!-- wp:post-date {"format":"j. F Y"} /-->
+	</div>
+	<!-- /wp:group -->
+	<!-- wp:post-title {"level":1,"fontSize":"xx-large"} /-->
+	<!-- wp:post-featured-image {"aspectRatio":"16/9","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}}} /-->
+	<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+	<!-- wp:separator {"style":{"spacing":{"margin":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|40"}}}} -->
+	<hr class="wp-block-separator has-alpha-channel-opacity" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--40)"/>
+	<!-- /wp:separator -->
+	<!-- wp:group {"style":{"typography":{"fontWeight":"600"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+	<div class="wp-block-group" style="font-weight:600">
+		<!-- wp:post-navigation-link {"type":"previous","label":"Vorheriger Beitrag","showTitle":true,"arrow":"arrow"} /-->
+		<!-- wp:post-navigation-link {"label":"Nächster Beitrag","showTitle":true,"arrow":"arrow"} /-->
+	</div>
+	<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|70"},"margin":{"top":"0"}}},"backgroundColor":"flaeche","layout":{"type":"constrained","contentSize":"1240px"}} -->
+<div class="wp-block-group alignfull has-flaeche-background-color has-background" style="margin-top:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--70)">
+	<!-- wp:heading {"align":"wide","fontSize":"xx-large"} -->
+	<h2 class="wp-block-heading alignwide has-xx-large-font-size">Weitere Neuigkeiten</h2>
+	<!-- /wp:heading -->
+	<!-- wp:query {"queryId":41,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false,"sticky":""},"align":"wide"} -->
+	<div class="wp-block-query alignwide">
+		<!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|50"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"18rem"}} -->
+			<!-- wp:pattern {"slug":"rv-sulz/post-card"} /-->
+		<!-- /wp:post-template -->
+	</div>
+	<!-- /wp:query -->
+</div>
+<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer","area":"footer"} /-->

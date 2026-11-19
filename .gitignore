@@ -1,0 +1,12 @@
+# Gebaute Theme-ZIPs – werden aus dem Ordner rv-sulz erzeugt
+*.zip
+
+# Lokale Einstellungen von Claude Code
+.claude/settings.local.json
+
+# System-/Editor-Dateien
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+~$*
