@@ -8,6 +8,16 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.13.0] – 2026-11-24
+### Geändert
+- Ladezeit (inc/performance.php):
+  - Bild der großen Top-Kachel (größtes sichtbares Element) lädt sofort mit hoher Priorität statt
+    „lazy“ (vorher Start erst nach ca. 1,4 s) und in passender Größe.
+  - Weißes Logo (48 KB) wird nur noch geladen, wenn es sichtbar ist (Dunkelmodus, Fußbereich).
+  - Contact Form 7 lädt Skripte und Styles nur noch auf Seiten mit Formular (vorher 6 Dateien auf jeder Seite).
+  - Inter und Barlow Condensed 800 werden vorab geladen – Überschriften springen weniger um.
+- 404-Seite: „Abgestiegen!“ statt „Abseits!“ (Abseits gibt es bei Radball und Kunstrad nicht).
+
 ## [1.12.0] – 2026-11-24
 ### Geändert
 - Startseite: Die News-Spalten Kunstrad | Radball zeigen keine Beiträge mehr, die schon als Top-Kachel

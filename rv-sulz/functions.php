@@ -122,6 +122,7 @@ require_once get_template_directory() . '/inc/footer.php';
 require_once get_template_directory() . '/inc/updater.php';
 require_once get_template_directory() . '/inc/archiv.php';
 require_once get_template_directory() . '/inc/consent.php';
+require_once get_template_directory() . '/inc/performance.php';
 
 /**
  * Dunkelmodus: früh im <head>, damit beim Laden nichts hell aufblitzt.
