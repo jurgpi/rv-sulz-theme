@@ -8,6 +8,13 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.10.0] – 2026-11-24
+### Neu
+- Werkzeuge → „Alte Website importieren“: holt PDFs, Excel-/Word-Dateien, Bilder und Videos, auf die
+  Beiträge und Seiten noch bei www.rv-sulz.at verlinken, in die Mediathek (am Beitrag angehängt) und
+  stellt die Links auf relative Pfade um. HTML-Seiten der alten Website bleiben verlinkt. Bereits
+  importierte Dateien werden erkannt; jede Inhaltsänderung ist als Revision gespeichert (inc/import-alt.php).
+
 ## [1.9.0] – 2026-11-24
 ### Neu
 - Einwilligungs-Banner für die Besucherstatistik: Google Analytics (Plugin „Site Kit“) lädt erst nach
