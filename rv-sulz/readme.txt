@@ -49,6 +49,10 @@ Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.
   FORMULAR-ID ersetzen, Platzhalter in [eckigen Klammern] ersetzen. Fertiges Formular und E-Mail-Text
   zum Kopieren: docs/contact-form-7-schnuppertraining.txt (im Projektordner, nicht im ZIP).
   Vorher Seiten /datenschutz/ und /impressum/ anlegen – das Formular verlinkt die Datenschutzerklärung.
+* Impressum und Datenschutz: Vorlagen im Projektordner docs/seite-impressum.html und docs/seite-datenschutz.html.
+  Seiten → Erstellen → Titel „Impressum“ bzw. „Datenschutz“ (Adresse /impressum/, /datenschutz/) →
+  oben rechts ⋮ → Code-Editor → Inhalt der Datei einfügen → zurück zum visuellen Editor → alle
+  [Platzhalter] ersetzen → Veröffentlichen. Danach beide Seiten unter Design → Menüs in „Fußzeile unten“ aufnehmen.
 * Termine (Plugin „Simple Calendar“): Monats- und Listenansicht werden automatisch im Theme-Design
   gezeigt (assets/css/simple-calendar.css, inkl. Dunkelmodus und Handy). Nichts einzustellen.
 * Ehrenmitglieder: Seiten → Erstellen → Titel „Ehrenmitglieder“ (Adresse /ehrenmitglieder/) → Muster
