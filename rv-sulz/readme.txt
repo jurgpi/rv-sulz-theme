@@ -56,8 +56,6 @@ Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.
 * Cookie-Banner (ab 1.9.0): Google Analytics aus „Site Kit“ wird automatisch blockiert, bis Besucher im
   Banner „Erlauben“ wählen. Nichts einzustellen. Weitere Skripte blockieren: Filter rv_sulz_consent_handles
   bzw. rv_sulz_consent_hosts. „Cookie-Einstellungen“ erscheint in der Fußzeile neben Kontakt/Impressum/Datenschutz.
-* Alte Website (ab 1.10.0): Werkzeuge → „Alte Website importieren“ → „Import starten“. Übernimmt verlinkte
-  Dateien von www.rv-sulz.at in die Mediathek und stellt die Links um. Kann gefahrlos wiederholt werden.
 * Termine (Plugin „Simple Calendar“): Monats- und Listenansicht werden automatisch im Theme-Design
   gezeigt (assets/css/simple-calendar.css, inkl. Dunkelmodus und Handy). Nichts einzustellen.
 * Ehrenmitglieder: Seiten → Erstellen → Titel „Ehrenmitglieder“ (Adresse /ehrenmitglieder/) → Muster

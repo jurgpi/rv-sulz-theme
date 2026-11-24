@@ -8,6 +8,11 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.10.1] – 2026-11-24
+### Entfernt
+- Werkzeug „Alte Website importieren“ wieder entfernt – der einmalige Import ist erledigt
+  (118 Dateien in der Mediathek, Links umgestellt). Mediathek und Beiträge bleiben unverändert.
+
 ## [1.10.0] – 2026-11-24
 ### Neu
 - Werkzeuge → „Alte Website importieren“: holt PDFs, Excel-/Word-Dateien, Bilder und Videos, auf die
