@@ -3,7 +3,7 @@ Theme Name: RV Sulz
 Theme URI: https://wordpress.rv-sulz.at/
 Author: RV Enzian Sulz
 Description: Modernes Block-Theme für den Radfahrverein ÖAMTC "Enzian" Sulz – Kunstrad, Radball und Wanderfahren. Enzianblau und Wappengrün, selbst gehostete Schriften (DSGVO-freundlich), voll im Website-Editor anpassbar.
-Version: 1.10.1
+Version: 1.10.2
 Requires at least: 6.6
 Update URI: https://github.com/jurgpi/rv-sulz-theme
 Tested up to: 6.8
@@ -277,7 +277,8 @@ html.rv-dark body { background: var(--rv-dark-bg); color: var(--rv-dark-text); }
 html.rv-dark :where(h1,h2,h3,h4,h5,h6):not(.has-text-color),
 html.rv-dark .wp-block-post-title a,
 html.rv-dark .wp-block-site-title a,
-html.rv-dark main a:not(.wp-element-button):not(.wp-block-button__link),
+/* Als Link gebaute Knöpfe (eigene Farben auf Blau) ausnehmen */
+html.rv-dark main a:not(.wp-element-button, .wp-block-button__link, .rv-mm-btn, .rv-mm-tile, .rv-archiv__more, .rv-chip, .rv-jahr),
 html.rv-dark .rv-header .wp-block-navigation-item__content,
 html.rv-dark .rv-header .wp-block-search__button,
 html.rv-dark .rv-header .wp-social-link,
@@ -658,3 +659,21 @@ html.rv-dark .rv-consent__box { background: var(--rv-dark-card, #15264D); color:
 html.rv-dark .rv-consent__text { color: var(--rv-dark-muted, #A3AFC7); }
 html.rv-dark .rv-consent__text a { color: var(--rv-dark-blue, #8FB3F2) !important; }
 html.rv-dark .rv-consent__title { color: #fff; }
+
+
+/* =========================================================
+   Touch-Geräte: Tippflächen mindestens 44 × 44 px.
+   Nur die Klickfläche wächst (Innenabstand), das Aussehen bleibt gleich.
+   ========================================================= */
+@media (pointer: coarse) {
+	.rv-header .wp-block-navigation__responsive-container-open,
+	.rv-header .wp-block-navigation__responsive-container-close {
+		display: inline-grid; place-items: center; min-width: 44px; min-height: 44px; margin: -10px;
+	}
+	.rv-header .wp-block-social-link-anchor { display: inline-grid; place-items: center; min-width: 44px; min-height: 44px; margin: -10px; }
+	.rv-theme-toggle { width: 44px; height: 44px; }
+	[class*="rv-l-col-"] a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: .6rem; margin-inline: -.6rem; }
+	.rv-footer-links a, .rv-footer-links .rv-consent-open { display: inline-flex; align-items: center; min-height: 44px; }
+	.rv-chip, .rv-archiv__reset { min-height: 44px; display: inline-flex; align-items: center; }
+	.wp-block-query-pagination a, .wp-block-query-pagination .page-numbers { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+}

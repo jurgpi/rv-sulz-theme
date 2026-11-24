@@ -8,6 +8,14 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.10.2] – 2026-11-24
+### Behoben
+- Dunkelmodus: Als Link gebaute Knöpfe („Schnuppertraining anfragen“, „Mehr laden“ im Archiv, Kacheln
+  „Archiv“/„Chronik“) bekamen hellblaue Schrift auf Blau (Kontrast 3,8:1) – jetzt weiß (8,1:1).
+- Touch-Geräte: Tippflächen mindestens 44 × 44 px – Menü-Knopf (vorher 24 px), Social-Symbole,
+  Dunkelmodus-Umschalter (38 px), „Alle →“ (42 × 17), Fußzeilen-Links und „Cookie-Einstellungen“ (16–22 px hoch),
+  Archiv-Filter und Seitenzahlen. Nur die Klickfläche wächst, das Aussehen am Desktop bleibt gleich.
+
 ## [1.10.1] – 2026-11-24
 ### Entfernt
 - Werkzeug „Alte Website importieren“ wieder entfernt – der einmalige Import ist erledigt
