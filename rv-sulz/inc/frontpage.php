@@ -155,12 +155,12 @@ function rv_sulz_customize_register( $wp_customize ) {
 
 	$add( 'rv_fp_show_band', __( 'Blaues Sparten-Band anzeigen', 'rv-sulz' ), 'checkbox' );
 
-	$add( 'rv_fp_show_grid', __( 'Neuigkeiten-Raster anzeigen', 'rv-sulz' ), 'checkbox' );
+	$add( 'rv_fp_show_grid', __( 'Neuigkeiten-Raster anzeigen (nur ältere Startseiten-Vorlage)', 'rv-sulz' ), 'checkbox' );
 	$add( 'rv_fp_grid_title', __( 'Neuigkeiten: Überschrift', 'rv-sulz' ), 'text' );
 	$add( 'rv_fp_grid_cat', __( 'Neuigkeiten: Kategorie', 'rv-sulz' ), 'select', array( 'choices' => $cats ) );
 	$add( 'rv_fp_grid_count', __( 'Neuigkeiten: Anzahl Beiträge pro Seite', 'rv-sulz' ), 'number', $num );
 
-	$add( 'rv_fp_show_cta', __( '„Komm ins Training!“ anzeigen', 'rv-sulz' ), 'checkbox' );
+	$add( 'rv_fp_show_cta', __( '„Komm ins Training!“ anzeigen (nur ältere Startseiten-Vorlage)', 'rv-sulz' ), 'checkbox' );
 }
 add_action( 'customize_register', 'rv_sulz_customize_register' );
 

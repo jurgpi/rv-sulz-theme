@@ -65,6 +65,27 @@ add_action( 'wp_enqueue_scripts', 'rv_sulz_simcal_styles', 100 );
 add_action( 'wp_footer', 'rv_sulz_simcal_styles', 5 );
 
 /**
+ * Plugin „Contact Form 7“: Formulare im Theme-Design (nach dem Plugin-CSS, damit unsere Regeln gewinnen).
+ * Außerdem für das Muster „Kontakt“, auch wenn das Plugin seine Styles einmal nicht lädt.
+ */
+function rv_sulz_form_styles() {
+	if ( wp_style_is( 'rv-sulz-forms', 'enqueued' ) ) {
+		return;
+	}
+	$cf7     = wp_style_is( 'contact-form-7', 'enqueued' );
+	$kontakt = false;
+	if ( is_singular() ) {
+		$post    = get_queried_object();
+		$kontakt = $post instanceof WP_Post && false !== strpos( $post->post_content, 'rv-kontakt' );
+	}
+	if ( $cf7 || $kontakt ) {
+		wp_enqueue_style( 'rv-sulz-forms', get_template_directory_uri() . '/assets/css/forms.css', $cf7 ? array( 'contact-form-7' ) : array(), RV_SULZ_VERSION );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'rv_sulz_form_styles', 100 );
+add_action( 'wp_footer', 'rv_sulz_form_styles', 5 );
+
+/**
  * Chronik-Seite: Design für den eigenen HTML-Block (.rvc) nur dort laden, wo er vorkommt.
  */
 function rv_sulz_chronik_styles() {
@@ -96,6 +117,7 @@ add_filter( 'do_shortcode_tag', 'rv_sulz_simcal_clean', 10, 2 );
 
 require_once get_template_directory() . '/inc/menus.php';
 require_once get_template_directory() . '/inc/frontpage.php';
+require_once get_template_directory() . '/inc/mitmachen.php';
 require_once get_template_directory() . '/inc/footer.php';
 require_once get_template_directory() . '/inc/updater.php';
 require_once get_template_directory() . '/inc/archiv.php';

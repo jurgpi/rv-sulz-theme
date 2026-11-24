@@ -15,7 +15,14 @@ Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.
    erster Unterpunkt gezeigt, im Handy-Menü nicht (dort ist der Hauptpunkt selbst anklickbar).
 
 == Aufbau ==
-* Startseite (front-page): Top-Beiträge, News Kunstrad | Radball, Sparten-Band, Neuigkeiten-Raster, Mitmach-Aufruf.
+* Startseite (front-page, ab 1.8.0): Top-Beiträge, „Probier’s aus“ mit drei Schritten, Trainingszeiten,
+  News Kunstrad | Radball, Sparten-Band, Kacheln „Archiv“ und „Chronik“.
+* Mitmachen & Training: Design → Customizer → Mitmachen & Training. Texte, Knopf und Schritte;
+  je Sparte Wann/Wo/Alter/Kosten/Ansprechperson (nur Funktion, keine Namen nötig) und optional ein Foto
+  (leer = neuestes großes Beitragsbild der Kategorie). Eine Sparte ohne „Wann“ wird nicht angezeigt,
+  ohne Trainingszeiten fehlt auch der Knopf „Trainingszeiten ansehen“.
+  Wurde die Startseite früher im Website-Editor angepasst, zeigt WordPress weiter die alte Fassung:
+  Design → Editor → Vorlagen → Startseite → „Anpassungen zurücksetzen“.
 * Seiten /kunstrad/ und /radball/: Seitentext + automatisch die neuesten Beiträge der Kategorie (page-kunstrad / page-radball).
 * Startseite einstellen: Design → Customizer → Startseite.
   Für jeden Bereich wählbar: Kategorie, Anzahl Beiträge, Überschrift, anzeigen ja/nein
@@ -37,6 +44,11 @@ Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.
   (Beiträge pro Seite, Suchfeld ein/aus) oder Shortcode [rv_archiv anzahl="12" suche="ja"].
   Sparten = alle Kategorien mit Beiträgen („Allgemein“ zuletzt). Adressen wie /archiv/?jahr=2024&sparte=radball
   lassen sich verlinken.
+* Kontakt (Plugin „Contact Form 7“): Formulare erscheinen automatisch im Theme-Design.
+  Seite Kontakt bearbeiten → Muster „Kontakt & Schnuppertraining“ einfügen → im Shortcode-Block
+  FORMULAR-ID ersetzen, Platzhalter in [eckigen Klammern] ersetzen. Fertiges Formular und E-Mail-Text
+  zum Kopieren: docs/contact-form-7-schnuppertraining.txt (im Projektordner, nicht im ZIP).
+  Vorher Seiten /datenschutz/ und /impressum/ anlegen – das Formular verlinkt die Datenschutzerklärung.
 * Termine (Plugin „Simple Calendar“): Monats- und Listenansicht werden automatisch im Theme-Design
   gezeigt (assets/css/simple-calendar.css, inkl. Dunkelmodus und Handy). Nichts einzustellen.
 * Ehrenmitglieder: Seiten → Erstellen → Titel „Ehrenmitglieder“ (Adresse /ehrenmitglieder/) → Muster

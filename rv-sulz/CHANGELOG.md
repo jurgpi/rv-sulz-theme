@@ -8,6 +8,26 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.8.0] – 2026-11-24
+### Neu
+- Startseite auf neue Mitglieder ausgerichtet. Neue Reihenfolge: Top-Beiträge → „Probier’s aus“
+  (Knopf „Schnuppertraining anfragen“ und drei Schritte) → Trainingszeiten → News Kunstrad | Radball
+  → Sparten-Band → Kacheln „Beiträge im Archiv“ und „Chronik“.
+- Customizer-Bereich „Mitmachen & Training“: Überschrift, Text, Knopf, drei Schritte; je Sparte
+  Wann, Wo, Alter, Kosten, Ansprechperson (Funktion) und Foto; Gründungsjahr und Chronik-Adresse.
+  Trainingszeiten erscheinen erst, wenn „Wann“ ausgefüllt ist.
+- Drei neue Blöcke für den Website-Editor: „RV Sulz: Probier’s aus“, „RV Sulz: Trainingszeiten“,
+  „RV Sulz: Archiv & Chronik“.
+- Formulare aus „Contact Form 7“ im Theme-Design: Felder, Auswahl, Zustimmungs-Kästchen, Absenden-Knopf,
+  Fehler- und Erfolgsmeldungen, Dunkelmodus (assets/css/forms.css).
+- Muster „Kontakt & Schnuppertraining“: Anfrage-Formular, Trainingsort mit Kartenlink und
+  Ansprechpersonen je Funktion. Formular-Vorlage zum Kopieren: docs/contact-form-7-schnuppertraining.txt.
+### Geändert
+- Das Neuigkeiten-Raster (mit Seitenblättern) und das Band „Komm ins Training!“ sind nicht mehr
+  Teil der Startseite; der Aufruf steht jetzt oben. Die Muster bleiben im Editor verfügbar.
+- Seiten (Vorlage „Seite“): breite Muster dürfen jetzt die volle Breite (1240px) nutzen,
+  normaler Text bleibt schmal (760px).
+
 ## [1.7.0] – 2026-11-20
 ### Neu
 - Muster „Vorstand“: Obmann als breite Karte, Karten für Funktionäre und sportliche Leitung

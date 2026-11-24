@@ -1,0 +1,160 @@
+/* =========================================================
+   Startseite „Mitglieder gewinnen“ (inc/mitmachen.php)
+   Blöcke rv-sulz/mitmachen, rv-sulz/training, rv-sulz/weiterlesen
+   ========================================================= */
+.rv-mm {
+	--mm-blue: var(--wp--preset--color--enzian, #1F4D9A);
+	--mm-blue-dark: var(--wp--preset--color--enzian-dunkel, #153B7A);
+	--mm-night: var(--wp--preset--color--nacht, #0C1E44);
+	--mm-sky: var(--wp--preset--color--himmel, #9DBEF7);
+	--mm-soft: var(--wp--preset--color--enzian-hell, #E8EFFA);
+	--mm-text: var(--wp--preset--color--kontrast, #14213D);
+	--mm-muted: var(--wp--preset--color--grau, #5A6478);
+	--mm-line: var(--wp--preset--color--line, #DDE3EE);
+	--mm-area: var(--wp--preset--color--flaeche, #F3F6FB);
+	--mm-card: var(--wp--preset--color--base, #fff);
+	--mm-bg: var(--wp--preset--color--base, #fff);
+	--mm-display: var(--wp--preset--font-family--display, inherit);
+	margin-block: 0 !important;
+}
+.rv-mm *, .rv-mm *::before, .rv-mm *::after { box-sizing: border-box; }
+.rv-mm-wrap {
+	/* Inhalt 1240px wie die übrigen Bereiche; der Seitenrand liegt außerhalb dieser Breite. */
+	max-width: calc(1240px + var(--wp--style--root--padding-left, 1.5rem) + var(--wp--style--root--padding-right, 1.5rem));
+	margin-inline: auto;
+	padding-inline: var(--wp--style--root--padding-left, 1.5rem) var(--wp--style--root--padding-right, 1.5rem);
+}
+.rv-mm h2 {
+	font-family: var(--mm-display); text-transform: uppercase; font-weight: 800;
+	letter-spacing: .01em; line-height: .95; margin: 0; color: var(--mm-text); text-wrap: balance;
+}
+.rv-mm h3 { font-family: var(--mm-display); text-transform: uppercase; font-weight: 800; letter-spacing: .01em; }
+
+/* ---------- Probier's aus ---------- */
+.rv-mm-start { background: var(--mm-bg); padding-block: clamp(3rem, 6vw, 5.5rem) clamp(3rem, 6vw, 5rem); border-bottom: 1px solid var(--mm-line); }
+.rv-mm-start .rv-mm-wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.rv-mm-start h2 { font-size: clamp(2.6rem, 5.2vw, 4.6rem); }
+.rv-mm-start h2 em { font-style: normal; color: var(--mm-blue); }
+.rv-mm-lead { font-size: 1.15rem; line-height: 1.55; color: var(--mm-muted); max-width: 34rem; margin: 1.25rem 0 2rem; }
+.rv-mm-btns { display: flex; flex-wrap: wrap; gap: .75rem; }
+.rv-mm-btn {
+	display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+	min-height: 48px; padding: .8rem 1.5rem; border-radius: 999px;
+	font-weight: 600; text-decoration: none !important;
+	transition: background-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.rv-mm-btn--p { background: var(--mm-blue); color: #fff !important; box-shadow: 0 10px 24px -8px rgba(31, 77, 154, .55); }
+.rv-mm-btn--p:hover { background: var(--mm-blue-dark); transform: translateY(-1px); box-shadow: 0 14px 28px -10px rgba(31, 77, 154, .6); }
+.rv-mm-btn--s { border: 1.5px solid var(--mm-blue); color: var(--mm-blue) !important; }
+.rv-mm-btn--s:hover { background: var(--mm-soft); }
+.rv-mm-btn svg { transition: transform .2s ease; }
+.rv-mm-btn:hover svg { transform: translateX(3px); }
+
+/* Drei Schritte, verbunden wie eine Radspur */
+.rv-mm-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; position: relative; }
+.rv-mm-steps::before {
+	content: ""; position: absolute; top: 27px; left: 28px; right: calc(33.33% - 28px); height: 2px;
+	background: repeating-linear-gradient(90deg, var(--mm-blue) 0 10px, transparent 10px 18px); opacity: .45;
+}
+.rv-mm-step { position: relative; }
+.rv-mm-num {
+	position: relative; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%;
+	background: var(--mm-soft); color: var(--mm-blue); border: 2px solid var(--mm-bg); box-shadow: 0 0 0 2px var(--mm-soft);
+	font-family: var(--mm-display); font-weight: 800; font-size: 1.6rem;
+}
+.rv-mm-step:first-child .rv-mm-num { background: var(--mm-blue); color: #fff; box-shadow: 0 0 0 2px var(--mm-blue); }
+.rv-mm-step h3 { font-size: 1.45rem; line-height: 1.05; margin: 1rem 0 .4rem; color: var(--mm-text); }
+.rv-mm-step p { margin: 0; color: var(--mm-muted); font-size: .98rem; line-height: 1.5; }
+
+/* ---------- Trainingszeiten ---------- */
+.rv-mm-training { background: var(--mm-area); padding-block: clamp(3rem, 6vw, 5rem); scroll-margin-top: 5rem; }
+.rv-mm-training h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 2rem; }
+.rv-mm-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); gap: 1.5rem; }
+.rv-mm-plan {
+	display: grid; grid-template-rows: auto 1fr; overflow: hidden;
+	background: var(--mm-card); border-radius: 20px;
+	box-shadow: 0 1px 2px rgba(20, 33, 61, .06), 0 12px 32px -12px rgba(20, 33, 61, .18);
+}
+.rv-mm-plan__img { position: relative; aspect-ratio: 16 / 7; overflow: hidden; background: var(--wp--preset--gradient--enzian-nacht, linear-gradient(135deg, #1F4D9A, #0C1E44)); }
+.rv-mm-plan__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rv-mm-plan__img:not(.is-empty)::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12, 30, 68, 0) 30%, rgba(12, 30, 68, .85)); }
+.rv-mm-plan__img h3 { position: absolute; left: 1.5rem; bottom: 1rem; z-index: 1; margin: 0; font-size: 2.2rem; line-height: 1; color: #fff; }
+.rv-mm-plan__body { display: flex; flex-direction: column; gap: 1.25rem; padding: 1.5rem; }
+.rv-mm-facts { display: grid; grid-template-columns: auto 1fr; gap: .7rem 1.25rem; margin: 0; }
+.rv-mm-facts dt { font-weight: 600; color: var(--mm-muted); font-size: .9rem; padding-top: .1rem; }
+.rv-mm-facts dd { margin: 0; color: var(--mm-text); font-size: 1.02rem; font-variant-numeric: tabular-nums; }
+.rv-mm-plan__foot {
+	margin-top: auto; padding-top: 1.1rem; border-top: 1px solid var(--mm-line);
+	display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem 1rem;
+}
+.rv-mm-plan__foot span { color: var(--mm-muted); font-size: .92rem; }
+.rv-mm-link { display: inline-flex; align-items: center; gap: .35rem; min-height: 44px; color: var(--mm-blue) !important; font-weight: 600; text-decoration: none !important; }
+.rv-mm-link:hover { text-decoration: underline !important; text-underline-offset: .2em; }
+
+/* ---------- Archiv & Chronik ---------- */
+.rv-mm-more { background: var(--mm-bg); padding-block: clamp(2.5rem, 5vw, 4rem); }
+.rv-mm-more .rv-mm-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); gap: 1.5rem; }
+.rv-mm-tile {
+	position: relative; isolation: isolate; overflow: hidden;
+	display: flex; flex-direction: column; justify-content: flex-end; min-height: 220px; padding: 1.75rem;
+	border-radius: 20px; background: var(--mm-night); color: #fff !important; text-decoration: none !important;
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+.rv-mm-tile:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -16px rgba(12, 30, 68, .55); }
+.rv-mm-tile img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.rv-mm-tile:hover img { transform: scale(1.04); }
+.rv-mm-tile.has-img::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(200deg, rgba(12, 30, 68, .15), rgba(12, 30, 68, .9)); }
+.rv-mm-tile--archiv { background: var(--mm-blue); }
+.rv-mm-tile--archiv::before, .rv-mm-tile--chronik:not(.has-img)::before {
+	content: ""; position: absolute; inset: 0; z-index: -1; opacity: .12;
+	background: url("../images/court-lines.svg") right -10% center / auto 130% no-repeat;
+}
+.rv-mm-tile--chronik:not(.has-img) { background: var(--wp--preset--gradient--enzian-nacht, var(--mm-night)); }
+.rv-mm-big { font-family: var(--mm-display); font-weight: 800; font-size: clamp(4rem, 9vw, 7rem); line-height: .8; color: var(--mm-sky); margin-bottom: .75rem; }
+.rv-mm-tile h3 { font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1; margin: 0 0 .5rem; color: #fff; }
+.rv-mm-tile p { margin: 0; max-width: 28rem; color: #E3EAF7; }
+.rv-mm-arrow { display: inline-flex; align-items: center; gap: .4rem; margin-top: 1rem; font-weight: 600; }
+.rv-mm-tile:hover .rv-mm-arrow svg { transform: translateX(3px); }
+.rv-mm-arrow svg { transition: transform .2s ease; }
+
+/* ---------- Tablet / Handy ---------- */
+@media (max-width: 900px) {
+	.rv-mm-start .rv-mm-wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+	.rv-mm-btn { flex: 1 1 100%; }
+	.rv-mm-steps { grid-template-columns: 1fr; gap: 1.4rem; }
+	.rv-mm-steps::before {
+		top: 28px; bottom: 28px; left: 27px; right: auto; width: 2px; height: auto;
+		background: repeating-linear-gradient(180deg, var(--mm-blue) 0 10px, transparent 10px 18px);
+	}
+	.rv-mm-step { display: grid; grid-template-columns: 56px 1fr; column-gap: 1rem; }
+	.rv-mm-step h3 { margin-top: .35rem; }
+	.rv-mm-step p { grid-column: 2; }
+	.rv-mm-plan__img h3 { font-size: 1.8rem; }
+	.rv-mm-facts { grid-template-columns: 1fr; gap: .15rem; }
+	.rv-mm-facts dd { margin-bottom: .6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.rv-mm-btn, .rv-mm-tile, .rv-mm-tile img, .rv-mm-btn svg, .rv-mm-arrow svg { transition: none; }
+}
+
+/* ---------- Dunkelmodus ---------- */
+html.rv-dark .rv-mm {
+	--mm-bg: var(--rv-dark-bg, #0B1630);
+	--mm-card: var(--rv-dark-card, #15264D);
+	--mm-area: var(--rv-dark-surface, #111F40);
+	--mm-text: var(--rv-dark-text, #E3E9F5);
+	--mm-muted: var(--rv-dark-muted, #A3AFC7);
+	--mm-soft: #1D3366;
+	--mm-line: #26385F;
+}
+html.rv-dark .rv-mm .rv-mm-start h2 em,
+html.rv-dark .rv-mm .rv-mm-num { color: var(--rv-dark-blue, #8FB3F2); }
+html.rv-dark .rv-mm .rv-mm-step:first-child .rv-mm-num { color: #fff; }
+html.rv-dark .rv-mm .rv-mm-btn--s,
+html.rv-dark .rv-mm .rv-mm-link { color: var(--rv-dark-blue, #8FB3F2) !important; border-color: var(--rv-dark-blue, #8FB3F2); }
+html.rv-dark .rv-mm .rv-mm-btn--p { color: #fff !important; }
+html.rv-dark .rv-mm .rv-mm-plan { box-shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px rgba(0, 0, 0, .3); }
+html.rv-dark .rv-mm .rv-mm-tile,
+html.rv-dark .rv-mm .rv-mm-tile h3 { color: #fff !important; }

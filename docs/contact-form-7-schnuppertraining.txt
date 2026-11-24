@@ -1,0 +1,91 @@
+Contact Form 7 – Formular „Schnuppertraining“ für das RV-Sulz-Theme
+=====================================================================
+
+So einrichten
+-------------
+1. WordPress: Formulare (Contact Form 7) → Neu hinzufügen → Titel „Schnuppertraining“.
+2. Reiter „Formular“: alles löschen und den Block FORMULAR unten einfügen.
+3. Reiter „E-Mail“: Felder wie unter E-MAIL unten ausfüllen. Die Empfänger-Adresse trägst du dort
+   selbst ein (nicht hier in der Datei).
+4. Reiter „Meldungen“: bei Bedarf die Texte unter MELDUNGEN übernehmen.
+5. Speichern. Oben steht dann der Shortcode, z. B. [contact-form-7 id="a1b2c3d" title="Schnuppertraining"].
+6. Seite „Kontakt“ bearbeiten → Muster „Kontakt & Schnuppertraining“ einfügen (Kategorie „RV Sulz“)
+   → im Shortcode-Block FORMULAR-ID durch die ID aus Schritt 5 ersetzen (oder den ganzen Shortcode
+   austauschen) → Platzhalter in [eckigen Klammern] ersetzen → Aktualisieren.
+
+Das Design (Felder, Fehlermeldungen, Dunkelmodus) kommt automatisch aus dem Theme.
+
+WICHTIG – Datenschutz: Das Formular verarbeitet personenbezogene Daten (Name, E-Mail, Alter, oft von
+Kindern). Vor dem Freischalten braucht die Website eine Datenschutzerklärung unter /datenschutz/
+(Stand 24.11.2026: Seite fehlt, ebenso /impressum/). Der Link im Zustimmungs-Kästchen zeigt dorthin.
+Bei Kindern unter 14 sollte ein Elternteil die Anfrage senden – siehe Hinweistext im Formular.
+
+Die Startseite schickt mit „Schnuppertraining anfragen“ auf /kontakt/ – die Seite muss also so heißen
+(oder die Adresse unter Customizer → Mitmachen & Training → Knopf: Adresse anpassen).
+
+
+FORMULAR (Reiter „Formular“)
+----------------------------
+<div class="rv-form-grid">
+<label> Name
+    [text* your-name autocomplete:name] </label>
+
+<label> E-Mail
+    [email* your-email autocomplete:email] </label>
+
+<label> Telefon <span class="rv-optional">(optional)</span>
+    [tel your-phone autocomplete:tel] </label>
+
+<label> Sparte
+    [select* your-sparte first_as_label "Bitte wählen" "Kunstrad" "Radball" "Weiß ich noch nicht"] </label>
+
+<label> Alter <span class="rv-optional">(des Kindes bzw. dein Alter)</span>
+    [number* your-age min:4 max:99] </label>
+</div>
+
+<label> Nachricht <span class="rv-optional">(optional)</span>
+    [textarea your-message x4 placeholder "Wann würde es dir passen? Hast du schon Erfahrung? Fragen?"] </label>
+
+[acceptance datenschutz] Ich bin einverstanden (bei Kindern unter 14: ein Elternteil), dass meine Angaben zur Bearbeitung der Anfrage gespeichert und verwendet werden. Mehr in der <a href="/datenschutz/">Datenschutzerklärung</a>. [/acceptance]
+
+[submit "Anfrage senden"]
+
+
+E-MAIL (Reiter „E-Mail“)
+------------------------
+An:          [Empfänger-Adresse selbst eintragen]
+Von:         [_site_title] <wordpress@DEINE-DOMAIN>   (Absender muss zur Domain der Website passen)
+Betreff:     Schnuppertraining [your-sparte] – Anfrage von [your-name]
+Zusätzliche Header:
+             Reply-To: [your-name] <[your-email]>
+Nachricht:
+             Neue Anfrage für ein Schnuppertraining
+
+             Name:    [your-name]
+             E-Mail:  [your-email]
+             Telefon: [your-phone]
+             Sparte:  [your-sparte]
+             Alter:   [your-age]
+
+             Nachricht:
+             [your-message]
+
+             --
+             Gesendet über das Formular auf [_site_url]
+
+Tipp: Unter „E-Mail (2)“ kann eine automatische Bestätigung an [your-email] gehen,
+z. B. Betreff „Danke für deine Anfrage beim [_site_title]“.
+
+
+MELDUNGEN (Reiter „Meldungen“, Auswahl)
+---------------------------------------
+Nachricht erfolgreich gesendet:
+    Danke! Deine Anfrage ist angekommen – wir melden uns in den nächsten Tagen.
+Fehler beim Senden:
+    Das Senden hat leider nicht geklappt. Bitte versuch es später noch einmal oder schreib uns direkt per E-Mail.
+Eingabefehler:
+    Bitte prüf die markierten Felder.
+Zustimmung fehlt:
+    Bitte bestätige den Hinweis zum Datenschutz.
+Pflichtfeld:
+    Bitte ausfüllen.

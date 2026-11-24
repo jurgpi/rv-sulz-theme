@@ -13,9 +13,9 @@ Modernes Vereinsdesign in Enzian-Blau, viele Einstellungen im Customizer, Dunkel
 
 ## Funktionen
 
-- **Startseite** mit Top-Beiträgen, News-Spalten **Kunstrad | Radball**, Sparten-Band,
-  Neuigkeiten-Raster und „Komm ins Training!“ – alles einstellbar unter *Customizer → Startseite*
-  (Kategorie, Anzahl, Überschrift, ein-/ausblenden).
+- **Startseite für neue Mitglieder**: Top-Beiträge, „Probier’s aus“ mit drei Schritten, Trainingszeiten je Sparte,
+  News-Spalten **Kunstrad | Radball** und Kacheln zu Archiv und Chronik – gepflegt unter *Customizer → Startseite*
+  und *Customizer → Mitmachen & Training*.
 - **Seiten /kunstrad/ und /radball/** mit automatisch den neuesten Beiträgen der Kategorie.
 - **Menüs und Fußbereich klassisch verwaltbar**: Pflege unter *Design → Menüs* und *Design → Widgets*,
   die Menü-Zuordnung bleibt beim Theme-Wechsel erhalten.
