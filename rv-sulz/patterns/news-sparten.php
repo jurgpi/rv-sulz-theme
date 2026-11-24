@@ -30,8 +30,8 @@ $rv_cols = array( 1 => 21, 2 => 22 );
 				<!-- wp:heading {"className":"rv-h-col-<?php echo (int) $rv_n; ?>","fontSize":"x-large"} -->
 				<h2 class="wp-block-heading rv-h-col-<?php echo (int) $rv_n; ?> has-x-large-font-size"><?php echo esc_html( rv_sulz_fp_col_title( $rv_n ) ); ?></h2>
 				<!-- /wp:heading -->
-				<!-- wp:paragraph {"className":"rv-l-col-<?php echo (int) $rv_n; ?>","style":{"typography":{"fontWeight":"700","fontSize":"0.9rem"},"elements":{"link":{"typography":{"textDecoration":"none"}}}}} -->
-				<p class="rv-l-col-<?php echo (int) $rv_n; ?> has-link-color" style="font-size:0.9rem;font-weight:700"><a href="<?php echo esc_url( rv_sulz_fp_col_link( $rv_n ) ); ?>">Alle →</a></p>
+				<!-- wp:paragraph {"className":"rv-l-col-<?php echo (int) $rv_n; ?>","style":{"typography":{"fontWeight":"700","fontSize":"var:preset|font-size|small"},"elements":{"link":{"typography":{"textDecoration":"none"}}}}} -->
+				<p class="rv-l-col-<?php echo (int) $rv_n; ?> has-link-color" style="font-size:var(--wp--preset--font-size--small);font-weight:700"><a href="<?php echo esc_url( rv_sulz_fp_col_link( $rv_n ) ); ?>">Alle →</a></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
@@ -45,7 +45,7 @@ $rv_cols = array( 1 => 21, 2 => 22 );
 						<!-- wp:group {"style":{"spacing":{"blockGap":"0.25rem"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 						<div class="wp-block-group">
 							<!-- wp:post-date {"format":"j. F Y"} /-->
-							<!-- wp:post-title {"level":3,"isLink":true,"style":{"typography":{"fontSize":"1.3rem","lineHeight":"1.1"}}} /-->
+							<!-- wp:post-title {"level":3,"isLink":true,"style":{"typography":{"fontSize":"var:preset|font-size|title","lineHeight":"1.1"}}} /-->
 						</div>
 						<!-- /wp:group -->
 					</div>

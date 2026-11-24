@@ -3,7 +3,7 @@ Theme Name: RV Sulz
 Theme URI: https://wordpress.rv-sulz.at/
 Author: RV Enzian Sulz
 Description: Modernes Block-Theme für den Radfahrverein ÖAMTC "Enzian" Sulz – Kunstrad, Radball und Wanderfahren. Enzianblau und Wappengrün, selbst gehostete Schriften (DSGVO-freundlich), voll im Website-Editor anpassbar.
-Version: 1.10.2
+Version: 1.11.0
 Requires at least: 6.6
 Update URI: https://github.com/jurgpi/rv-sulz-theme
 Tested up to: 6.8
@@ -15,6 +15,23 @@ Tags: block-patterns, full-site-editing, custom-logo, custom-colors, editor-styl
 */
 
 /* Die meisten Stile stehen in theme.json. Hier nur, was theme.json (noch) nicht kann. */
+
+/* =========================================================
+   Typografie-Rollen (eine Skala für das ganze Theme)
+   Etikett 13px · Meta 15px · Text 18px · Einleitung 18–22px · Titel 20–24px · Großer Titel 26–36px
+   Werte kommen aus theme.json (Schriftgrößen), hier nur nach Aufgabe benannt.
+   ========================================================= */
+:root {
+	--rv-type-label: var(--wp--preset--font-size--x-small, .8125rem);
+	--rv-type-meta: var(--wp--preset--font-size--small, .9375rem);
+	--rv-type-body: var(--wp--preset--font-size--medium, 1.125rem);
+	--rv-type-lead: var(--wp--preset--font-size--large, 1.25rem);
+	--rv-type-title: var(--wp--preset--font-size--title, 1.375rem);
+	--rv-type-title-lg: var(--wp--preset--font-size--x-large, 2rem);
+}
+:where(h1, h2, h3, h4, h5, h6, .wp-block-post-title, .rv-mm h2, .rv-consent__title) { text-wrap: balance; }
+:where(p, li, dd, blockquote) { text-wrap: pretty; }
+
 
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
@@ -145,7 +162,7 @@ html { scroll-behavior: smooth; }
 .rv-pill a, .rv-tile .wp-block-post-terms a {
 	display: inline-block; padding: .2rem .65rem; border-radius: 999px;
 	background: var(--wp--preset--color--enzian); color: #fff !important;
-	font-size: .72rem; letter-spacing: .1em;
+	font-size: var(--rv-type-label); letter-spacing: .1em;
 }
 .rv-pill .wp-block-post-terms__separator, .rv-tile .wp-block-post-terms__separator { display: none; }
 .rv-pill, .rv-tile .wp-block-post-terms { display: flex; gap: .35rem; flex-wrap: wrap; }
@@ -191,7 +208,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* Seitennummerierung */
-.wp-block-query-pagination { gap: .5rem; font-family: var(--wp--preset--font-family--display); font-size: 1.15rem; }
+.wp-block-query-pagination { gap: .5rem; font-family: var(--wp--preset--font-family--display); font-size: var(--rv-type-lead); }
 .wp-block-query-pagination-numbers { display: inline-flex; gap: .35rem; }
 .wp-block-query-pagination-numbers .page-numbers {
 	display: inline-grid; place-items: center; min-width: 2.4rem; height: 2.4rem; padding: 0 .5rem;
@@ -208,9 +225,9 @@ html { scroll-behavior: smooth; }
 .rv-header:has(.is-menu-open) { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--wp--preset--color--base) !important; }
 @media (max-width: 599px) { .rv-header { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--wp--preset--color--base) !important; } }
 .rv-header .wp-block-navigation__responsive-container.is-menu-open { padding-top: 4.5rem; }
-.rv-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item { font-size: 1.6rem; }
+.rv-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item { font-size: var(--rv-type-title-lg); }
 .rv-header .is-menu-open .wp-block-navigation__submenu-container { border: 0 !important; box-shadow: none; padding: .25rem 0 0 1rem !important; background: transparent !important; }
-.rv-header .is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item { font-size: 1.2rem; opacity: .85; }
+.rv-header .is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item { font-size: var(--rv-type-title); opacity: .85; }
 .rv-header .is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover { background: transparent; }
 .rv-header .is-menu-open .wp-block-navigation__container,
 .rv-header .is-menu-open .wp-block-navigation-item { align-items: flex-start !important; }
@@ -339,14 +356,14 @@ html.rv-dark main .rv-pill a:not(.wp-element-button) { color: #fff !important; }
 	margin: 0 0 0.9rem;
 	color: #fff;
 	font-family: var(--wp--preset--font-family--display, inherit);
-	font-size: 1.25rem;
+	font-size: var(--rv-type-title);
 	text-transform: uppercase;
 	letter-spacing: 0.02em;
 }
-.rv-footer .rv-widget ul { list-style: none; margin: 0; padding: 0; font-size: 0.95rem; }
+.rv-footer .rv-widget ul { list-style: none; margin: 0; padding: 0; font-size: var(--rv-type-meta); }
 .rv-footer .rv-widget li { margin: 0 0 0.5rem; }
 .rv-footer .rv-widget li ul { margin: 0.5rem 0 0 1rem; }
-.rv-footer .rv-widget p { font-size: 0.95rem; }
+.rv-footer .rv-widget p { font-size: var(--rv-type-meta); }
 .rv-footer .rv-widget a { color: #fff; font-weight: 400; text-decoration: none; }
 html.rv-dark .rv-footer .rv-widget-title, html.rv-dark .rv-footer .rv-widget a { color: #fff !important; }
 .rv-footer .rv-widget a:hover { text-decoration: underline; }
@@ -401,14 +418,14 @@ html.rv-dark .rv-footer .rv-widget-title, html.rv-dark .rv-footer .rv-widget a {
 .rv-honor-card .rv-honor-name {
 	margin-top: .6rem !important;
 	font-family: var(--wp--preset--font-family--display);
-	font-size: 1.35rem;
+	font-size: var(--rv-type-title);
 	font-weight: 800;
 	line-height: 1.1;
 	text-transform: uppercase;
 	color: var(--wp--preset--color--kontrast);
 }
-.rv-honor-card .rv-honor-since { font-size: .85rem; font-weight: 700; color: var(--wp--preset--color--enzian); }
-.rv-honor-card .rv-honor-note { font-size: .85rem; line-height: 1.45; color: var(--wp--preset--color--grau); }
+.rv-honor-card .rv-honor-since { font-size: var(--rv-type-meta); font-weight: 700; color: var(--wp--preset--color--enzian); }
+.rv-honor-card .rv-honor-note { font-size: var(--rv-type-meta); line-height: 1.45; color: var(--wp--preset--color--grau); }
 .rv-honor-card .rv-honor-note:empty { display: none; }
 /* Mit Foto: Foto statt Abzeichen */
 .rv-honor-card:has(> .wp-block-image) { padding-top: 1.4rem; }
@@ -499,7 +516,7 @@ html.rv-dark .rv-honor-card .rv-honor-note { color: var(--rv-dark-muted); }
 	border-radius: 999px;
 	background: var(--wp--preset--color--enzian-hell, #E8EFFA);
 	color: var(--wp--preset--color--enzian);
-	font-size: .72rem;
+	font-size: var(--rv-type-label);
 	font-weight: 700;
 	letter-spacing: .06em;
 	text-transform: uppercase;
@@ -509,16 +526,16 @@ html.rv-dark .rv-honor-card .rv-honor-note { color: var(--rv-dark-muted); }
 .rv-board-card .rv-board-name {
 	margin-top: .3rem !important;
 	font-family: var(--wp--preset--font-family--display);
-	font-size: 1.35rem;
+	font-size: var(--rv-type-title);
 	font-weight: 800;
 	line-height: 1.1;
 	text-transform: uppercase;
 	color: var(--wp--preset--color--kontrast);
 }
-.rv-board-card .rv-board-task { font-size: .85rem; line-height: 1.45; color: var(--wp--preset--color--grau); }
+.rv-board-card .rv-board-task { font-size: var(--rv-type-meta); line-height: 1.45; color: var(--wp--preset--color--grau); }
 .rv-board-card .rv-board-task:empty,
 .rv-board-card .rv-board-contact:empty { display: none; }
-.rv-board-card .rv-board-contact { margin-top: auto !important; padding-top: .5rem; font-size: .85rem; font-weight: 700; }
+.rv-board-card .rv-board-contact { margin-top: auto !important; padding-top: .5rem; font-size: var(--rv-type-meta); font-weight: 700; }
 .rv-board-card .rv-board-contact a { color: var(--wp--preset--color--enzian); text-decoration: none; }
 .rv-board-card .rv-board-contact a::after { content: " →"; }
 .rv-board-card .rv-board-contact a:hover { text-decoration: underline; }
@@ -536,8 +553,8 @@ html.rv-dark .rv-honor-card .rv-honor-note { color: var(--rv-dark-muted); }
 	box-shadow: 0 6px 16px rgba(12, 30, 68, .2);
 }
 /* Obmann: breite Karte */
-.rv-board-lead .rv-board-name { font-size: 1.8rem; }
-.rv-board-lead .rv-board-task { max-width: 32rem; font-size: .95rem; }
+.rv-board-lead .rv-board-name { font-size: var(--rv-type-title-lg); }
+.rv-board-lead .rv-board-task { max-width: 32rem; font-size: var(--rv-type-meta); }
 @media (min-width: 700px) {
 	.rv-board-card.rv-board-lead {
 		display: grid;
@@ -580,7 +597,7 @@ html.rv-dark .rv-honor-card .rv-honor-note { color: var(--rv-dark-muted); }
 .rv-board-cta .rv-board-cta-title {
 	margin: 0;
 	font-family: var(--wp--preset--font-family--display);
-	font-size: 1.6rem;
+	font-size: var(--rv-type-title-lg);
 	font-weight: 800;
 	text-transform: uppercase;
 	color: #fff !important;
@@ -631,14 +648,14 @@ html.rv-dark .rv-board-chips li { color: var(--rv-dark-text); }
 .rv-consent.is-open .rv-consent__box { transform: none; opacity: 1; }
 .rv-consent__title {
 	margin: 0 0 .35rem; font-family: var(--wp--preset--font-family--display, inherit);
-	font-weight: 800; font-size: 1.5rem; line-height: 1.05; text-transform: uppercase; letter-spacing: .01em;
+	font-weight: 800; font-size: var(--rv-type-title); line-height: 1.05; text-transform: uppercase; letter-spacing: .01em;
 }
-.rv-consent__text { margin: 0; font-size: .95rem; line-height: 1.5; color: var(--wp--preset--color--grau, #5A6478); }
+.rv-consent__text { margin: 0; font-size: var(--rv-type-meta); line-height: 1.5; color: var(--wp--preset--color--grau, #5A6478); }
 .rv-consent__text a { color: var(--wp--preset--color--enzian, #1F4D9A); font-weight: 600; text-underline-offset: .2em; }
 .rv-consent__actions { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1rem; }
 .rv-consent__btn {
 	min-height: 48px; padding: .7rem 1.2rem; border-radius: 999px; cursor: pointer;
-	font: inherit; font-weight: 700; font-size: 1rem;
+	font: inherit; font-weight: 700; font-size: var(--rv-type-body);
 	background: var(--wp--preset--color--enzian, #1F4D9A); color: #fff;
 	border: 2px solid var(--wp--preset--color--enzian, #1F4D9A);
 	transition: background-color .2s ease;
@@ -677,3 +694,6 @@ html.rv-dark .rv-consent__title { color: #fff; }
 	.rv-chip, .rv-archiv__reset { min-height: 44px; display: inline-flex; align-items: center; }
 	.wp-block-query-pagination a, .wp-block-query-pagination .page-numbers { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 }
+
+/* Knopf-Rolle wie theme.json-Element „button“ */
+.rv-consent__btn { font-family: var(--wp--preset--font-family--display); font-weight: 600; font-size: 1.125rem; letter-spacing: .06em; text-transform: uppercase; line-height: 1.1; }

@@ -12,8 +12,8 @@
 <div class="wp-block-group alignfull rv-sec-grid has-flaeche-background-color has-background" style="margin-top:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)">
 	<!-- wp:group {"align":"wide","layout":{"type":"constrained","contentSize":"680px","justifyContent":"left"}} -->
 	<div class="wp-block-group alignwide">
-		<!-- wp:paragraph {"className":"rv-kicker","style":{"typography":{"fontSize":"0.85rem","fontWeight":"700"}},"textColor":"enzian"} -->
-		<p class="rv-kicker has-enzian-color has-text-color" style="font-size:0.85rem;font-weight:700">Aus dem Vereinsleben</p>
+		<!-- wp:paragraph {"className":"rv-kicker","style":{"typography":{"fontSize":"var:preset|font-size|x-small","fontWeight":"700"}},"textColor":"enzian"} -->
+		<p class="rv-kicker has-enzian-color has-text-color" style="font-size:var(--wp--preset--font-size--x-small);font-weight:700">Aus dem Vereinsleben</p>
 		<!-- /wp:paragraph -->
 		<!-- wp:heading {"className":"rv-h-grid","fontSize":"xx-large"} -->
 		<h2 class="wp-block-heading rv-h-grid has-xx-large-font-size">Neuigkeiten</h2>

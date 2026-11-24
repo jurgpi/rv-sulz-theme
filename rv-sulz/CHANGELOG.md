@@ -8,6 +8,16 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.11.0] – 2026-11-24
+### Geändert
+- Typografie mit fester Rollen-Skala statt rund 40 Einzelwerten: Etikett 13px, Meta 15px, Text 18px
+  (vorher 17px), Einleitung 18–22px, Titel 20–24px, großer Titel 26–36px (CSS-Variablen --rv-type-*,
+  neue Schriftgrößen „Etikett“ und „Titel“ im Editor). Kalender-Monatsraster bleibt kompakt.
+- Lesebreite 660px statt 760px: Beiträge und Seiten haben jetzt ca. 75 statt 92 Zeichen pro Zeile.
+- Alle Knöpfe einheitlich im Knopf-Stil des Themes (Barlow Condensed, Großbuchstaben).
+- Überschriften brechen ausgewogen um (text-wrap: balance), Fließtext ohne einzelne Wörter in der
+  letzten Zeile (text-wrap: pretty).
+
 ## [1.10.2] – 2026-11-24
 ### Behoben
 - Dunkelmodus: Als Link gebaute Knöpfe („Schnuppertraining anfragen“, „Mehr laden“ im Archiv, Kacheln

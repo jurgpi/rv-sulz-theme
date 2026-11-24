@@ -19,7 +19,7 @@
 	display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
 	gap: 1rem 2rem; margin-bottom: 1.5rem;
 }
-.rv-archiv__intro { margin: 0; color: var(--rv-a-muted); font-size: 1.05rem; }
+.rv-archiv__intro { margin: 0; color: var(--rv-a-muted); font-size: var(--rv-type-body); }
 .rv-archiv__intro strong { color: var(--rv-a-text); }
 .rv-archiv__suche {
 	position: relative; display: flex; align-items: center;
@@ -33,14 +33,14 @@
 .rv-archiv__lupe { position: absolute; left: 1rem; color: var(--rv-a-muted); pointer-events: none; }
 .rv-archiv__suche input {
 	flex: 1; min-width: 0; border: 0; background: transparent; outline: none;
-	font: inherit; font-size: 1rem; color: var(--rv-a-text); padding: .45rem 0;
+	font: inherit; font-size: var(--rv-type-body); color: var(--rv-a-text); padding: .45rem 0;
 }
 .rv-archiv__suche input::-webkit-search-cancel-button { cursor: pointer; }
 .rv-archiv__suche input:focus-visible { outline: none; }
 .rv-archiv__suche button {
 	border: 0; border-radius: 999px; cursor: pointer;
 	background: var(--rv-a-blue); color: #fff;
-	font: inherit; font-weight: 600; font-size: .95rem; padding: .55rem 1.2rem;
+	font: inherit; font-weight: 600; font-size: var(--rv-type-meta); padding: .55rem 1.2rem;
 	transition: background .2s ease;
 }
 .rv-archiv__suche button:hover { background: var(--wp--preset--color--enzian-dunkel, #153B7A); }
@@ -52,7 +52,7 @@
 	padding: .5rem 1.05rem; border-radius: 999px;
 	border: 1.5px solid var(--rv-a-line); background: var(--rv-a-card);
 	color: var(--rv-a-text) !important; text-decoration: none !important;
-	font-weight: 600; font-size: .95rem; line-height: 1.2;
+	font-weight: 600; font-size: var(--rv-type-meta); line-height: 1.2;
 	transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
 }
 .rv-chip::before {
@@ -82,9 +82,9 @@
 }
 .rv-jahr__j {
 	font-family: var(--wp--preset--font-family--display, inherit);
-	font-weight: 700; font-size: 1.2rem; letter-spacing: .02em;
+	font-weight: 700; font-size: var(--rv-type-title); letter-spacing: .02em;
 }
-.rv-jahr__n { font-size: .75rem; color: var(--rv-a-muted); margin-top: .15rem; }
+.rv-jahr__n { font-size: var(--rv-type-label); color: var(--rv-a-muted); margin-top: .15rem; }
 .rv-jahr:hover { border-color: var(--rv-a-blue); transform: translateY(-2px); box-shadow: var(--wp--preset--shadow--soft); }
 .rv-jahr.is-active { background: var(--rv-a-blue); border-color: var(--rv-a-blue); color: #fff !important; box-shadow: 0 8px 20px rgba(31,77,154,.3); }
 .rv-jahr.is-active .rv-jahr__n { color: rgba(255,255,255,.8); }
@@ -96,7 +96,7 @@
 	padding: .75rem 0; margin-bottom: 1.25rem; border-top: 1px solid var(--rv-a-line);
 	color: var(--rv-a-muted); font-weight: 600;
 }
-.rv-archiv__reset { color: var(--rv-a-blue) !important; font-weight: 600; font-size: .95rem; }
+.rv-archiv__reset { color: var(--rv-a-blue) !important; font-weight: 600; font-size: var(--rv-type-meta); }
 
 /* Karten-Raster */
 .rv-archiv__grid {
@@ -120,17 +120,17 @@
 	background: var(--wp--preset--gradient--enzian-nacht, linear-gradient(135deg, #1F4D9A, #0C1E44));
 }
 .rv-acard__text { padding: 1rem 1.15rem 1.25rem; display: flex; flex-direction: column; gap: .5rem; }
-.rv-acard__meta { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; font-size: .85rem; color: var(--rv-a-muted); }
+.rv-acard__meta { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; font-size: var(--rv-type-meta); color: var(--rv-a-muted); }
 .rv-acard__sparte {
 	display: inline-block; padding: .18rem .6rem; border-radius: 999px;
 	background: var(--rv-a-blue); color: #fff;
-	font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+	font-size: var(--rv-type-label); font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
 }
 .rv-acard__sparte--kunstrad { background: #2E8B57; }
 .rv-acard__sparte--veranstaltung { background: #C8741A; }
 .rv-acard__sparte--allgemein { background: #6B768C; }
 .rv-acard__titel {
-	margin: 0; font-size: 1.3rem; line-height: 1.2;
+	margin: 0; font-size: var(--rv-type-title); line-height: 1.2;
 	display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
 .rv-acard__titel a { color: var(--rv-a-text); text-decoration: none; }
@@ -143,14 +143,14 @@
 	text-align: center; padding: 3rem 1rem; border: 2px dashed var(--rv-a-line); border-radius: 18px;
 	color: var(--rv-a-muted);
 }
-.rv-archiv__leer p { margin: 0 0 1rem; font-size: 1.1rem; }
+.rv-archiv__leer p { margin: 0 0 1rem; font-size: var(--rv-type-body); }
 
 /* Weitere Beiträge */
 .rv-archiv__pager {
 	display: flex; align-items: center; justify-content: center; gap: 1rem;
 	margin-top: var(--wp--preset--spacing--60, 2.5rem);
 }
-.rv-archiv__seiten { color: var(--rv-a-muted); font-size: .95rem; }
+.rv-archiv__seiten { color: var(--rv-a-muted); font-size: var(--rv-type-meta); }
 .rv-archiv__prev, .rv-archiv__more {
 	display: inline-block; padding: .75rem 1.6rem; border-radius: 999px;
 	border: 1.5px solid var(--rv-a-blue); color: var(--rv-a-blue) !important;
@@ -197,3 +197,6 @@ html.rv-dark .rv-archiv .rv-chip,
 html.rv-dark .rv-archiv .rv-jahr { color: var(--rv-a-text) !important; }
 html.rv-dark .rv-archiv .rv-chip.is-active,
 html.rv-dark .rv-archiv .rv-jahr.is-active { color: #fff !important; }
+
+/* Knopf-Rolle wie theme.json-Element „button“ */
+.rv-archiv__more, .rv-archiv__prev, .rv-archiv__suche button { font-family: var(--wp--preset--font-family--display); font-weight: 600; font-size: 1.125rem; letter-spacing: .06em; text-transform: uppercase; line-height: 1.1; }

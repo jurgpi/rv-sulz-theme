@@ -77,7 +77,7 @@ html.rv-dark .simcal-calendar.simcal-default-calendar {
 
 /* Bearbeiten-Link und „Powered by“ dezent */
 .simcal-default-calendar > .simcal-align-right small,
-.simcal-default-calendar .simcal-powered { font-size: .75rem; color: var(--rv-cal-muted); }
+.simcal-default-calendar .simcal-powered { font-size: var(--rv-type-label); color: var(--rv-cal-muted); }
 .simcal-default-calendar .simcal-powered { display: block; margin-top: .75rem; }
 .simcal-default-calendar .simcal-powered a,
 .simcal-default-calendar > .simcal-align-right a { color: inherit !important; }
@@ -206,7 +206,7 @@ body .qtip {
 	color: var(--wp--preset--color--kontrast, #14213D) !important;
 	box-shadow: 0 18px 40px rgba(12, 30, 68, .18) !important;
 	font-family: inherit;
-	font-size: .9rem;
+	font-size: var(--rv-type-meta);
 	line-height: 1.45;
 }
 body .qtip .qtip-content { padding: 1rem 1.1rem !important; }
@@ -215,7 +215,7 @@ body .qtip .simcal-event-title {
 	display: block;
 	margin-bottom: .35rem;
 	font-family: var(--wp--preset--font-family--display, inherit);
-	font-size: 1.3rem;
+	font-size: var(--rv-type-title);
 	line-height: 1.1;
 	text-transform: uppercase;
 	color: var(--wp--preset--color--enzian, #1F4D9A);
@@ -231,7 +231,7 @@ html.rv-dark body .qtip .simcal-event-title,
 html.rv-dark body .qtip a { color: var(--rv-dark-blue, #8FB3F2); }
 
 /* ---------- Gemeinsam: Termin-Details (Liste + Tooltip) ---------- */
-.simcal-event-details { font-size: .92rem; line-height: 1.5; }
+.simcal-event-details { font-size: var(--rv-type-meta); line-height: 1.5; }
 .simcal-event-details > strong { display: block; }
 .simcal-event-details .simcal-event-start-date,
 .simcal-event-details .simcal-event-start-time,
@@ -277,7 +277,7 @@ html.rv-dark body .qtip .simcal-event-address { color: var(--rv-dark-muted, #A3A
 	background: var(--rv-cal-blue) !important;
 	color: #fff !important;
 	font-family: var(--wp--preset--font-family--display, inherit);
-	font-size: 1.05rem;
+	font-size: var(--rv-type-body);
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: .04em;
@@ -309,7 +309,7 @@ html.rv-dark .simcal-default-calendar-list .simcal-event::before { background: v
 	display: block;
 	margin-bottom: .25rem;
 	font-family: var(--wp--preset--font-family--display, inherit);
-	font-size: 1.45rem;
+	font-size: var(--rv-type-title);
 	font-weight: 800;
 	line-height: 1.1;
 	text-transform: uppercase;
@@ -319,7 +319,7 @@ html.rv-dark .simcal-default-calendar-list .simcal-event::before { background: v
 .simcal-default-calendar-list .simcal-event-details a {
 	display: inline-block;
 	margin-top: .5rem;
-	font-size: .85rem;
+	font-size: var(--rv-type-meta);
 	font-weight: 700;
 	text-decoration: none;
 	color: var(--rv-cal-blue-text) !important;

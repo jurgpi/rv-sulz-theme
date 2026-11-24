@@ -39,7 +39,7 @@ body .rvc .rvc-nav a {
 	background: transparent;
 	color: var(--rvc-blue) !important;
 	font-family: var(--rvc-display);
-	font-size: 1rem;
+	font-size: var(--rv-type-body);
 	font-weight: 600;
 	letter-spacing: .04em;
 	text-transform: uppercase;
@@ -62,7 +62,7 @@ body .rvc h2.rvc-h {
 	scroll-margin-top: 6rem;
 }
 body .rvc h2.rvc-h::before { width: 8px; height: 1.1em; border-radius: 4px; background: var(--rvc-accent); }
-body .rvc .rvc-sub { margin-bottom: 1.6rem; font-size: .9rem; }
+body .rvc .rvc-sub { margin-bottom: 1.6rem; font-size: var(--rv-type-meta); }
 
 /* ---------- Größte Erfolge ---------- */
 body .rvc .rvc-grid { gap: 1.4rem; }
@@ -79,14 +79,14 @@ body .rvc .rvc-card:hover img { transform: scale(1.04); }
 body .rvc .rvc-card-b { position: relative; z-index: 1; padding: 1.1rem 1.2rem 1.25rem; background: var(--rvc-card); border-top: 4px solid var(--rvc-accent); }
 body .rvc .rvc-card-b strong {
 	font-family: var(--rvc-display);
-	font-size: 1.3rem;
+	font-size: var(--rv-type-title);
 	font-weight: 800;
 	line-height: 1.1;
 	text-transform: uppercase;
 	color: var(--rvc-head);
 }
 body .rvc .rvc-team { color: var(--rvc-blue); }
-body .rvc .rvc-medals { margin-top: .7rem; font-size: .84rem; color: var(--rvc-muted); }
+body .rvc .rvc-medals { margin-top: .7rem; font-size: var(--rv-type-meta); color: var(--rvc-muted); }
 body .rvc .rvc-medals li { margin: .35rem 0; }
 body .rvc .rvc-m { width: .85rem; height: .85rem; box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .18), 0 0 0 2px var(--rvc-card), 0 0 0 3px currentColor; color: var(--rvc-border); }
 body .rvc .rvc-m.g { color: var(--rvc-gold); }
@@ -127,18 +127,18 @@ body .rvc .rvc-o .rvc-ph {
 body .rvc .rvc-o .rvc-ph { color: var(--rvc-muted); }
 body .rvc .rvc-o strong {
 	font-family: var(--rvc-display);
-	font-size: 1.1rem;
+	font-size: var(--rv-type-body);
 	font-weight: 800;
 	line-height: 1.1;
 	text-transform: uppercase;
 	color: var(--rvc-head);
 }
-body .rvc .rvc-o span { margin-top: .25rem; font-size: .82rem; font-weight: 600; color: var(--rvc-blue); }
+body .rvc .rvc-o span { margin-top: .25rem; font-size: var(--rv-type-meta); font-weight: 600; color: var(--rvc-blue); }
 body .rvc .rvc-o em {
 	margin-top: .55rem;
 	padding: .15rem .7rem;
 	background: var(--rvc-accent);
-	font-size: .72rem;
+	font-size: var(--rv-type-label);
 	letter-spacing: .03em;
 }
 
@@ -190,7 +190,7 @@ body .rvc .rvc-tl > li:hover::after { border-color: var(--rvc-accent); }
 body .rvc .rvc-y {
 	margin-bottom: .35rem;
 	font-family: var(--rvc-display);
-	font-size: 1.75rem;
+	font-size: var(--rv-type-title-lg);
 	font-weight: 800;
 	line-height: 1;
 	letter-spacing: .01em;
@@ -203,7 +203,7 @@ body .rvc .rvc-tl > li:first-child {
 	color: #fff;
 }
 body .rvc .rvc-tl > li:first-child::after { background: var(--wp--preset--color--enzian, #1F4D9A); border-color: transparent; }
-body .rvc .rvc-tl > li:first-child .rvc-y { font-size: 2.2rem; color: #fff; }
+body .rvc .rvc-tl > li:first-child .rvc-y { font-size: var(--rv-type-title-lg); color: #fff; }
 body .rvc .rvc-tl > li:first-child a { color: #fff; }
 body .rvc .rvc-tl > li:first-child .rvc-aus { background: rgba(255, 255, 255, .1); }
 body .rvc .rvc-tl > li:first-child .rvc-aus dt { color: #fff; }
@@ -239,7 +239,7 @@ body .rvc .rvc-aus { margin: .7rem 0; padding: .9rem 1.1rem; border-radius: 12px
 		width: 6.2rem;
 		margin: 0;
 		text-align: right;
-		font-size: 1.9rem;
+		font-size: var(--rv-type-title-lg);
 	}
 	body .rvc .rvc-tl > li:first-child .rvc-y { position: static; width: auto; text-align: left; }
 }
@@ -249,8 +249,8 @@ body .rvc .rvc-aus { margin: .7rem 0; padding: .9rem 1.1rem; border-radius: 12px
 	body .rvc .rvc-tl::before { left: .5rem; }
 	body .rvc .rvc-tl > li { padding: .9rem 1rem; }
 	body .rvc .rvc-tl > li::before { left: -1.75rem; }
-	body .rvc .rvc-y { font-size: 1.5rem; }
-	body .rvc .rvc-card-b strong { font-size: 1.1rem; }
+	body .rvc .rvc-y { font-size: var(--rv-type-title); }
+	body .rvc .rvc-card-b strong { font-size: var(--rv-type-body); }
 	body .rvc .rvc-aus { grid-template-columns: 1fr; }
 	body .rvc .rvc-aus dd { margin-bottom: .35rem; }
 }

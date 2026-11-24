@@ -12,8 +12,8 @@
 <div class="wp-block-group alignfull rv-hero rv-slant rv-slant-top rv-sec-band has-base-color has-enzian-nacht-gradient-background has-text-color has-background" style="margin-top:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)">
 	<!-- wp:group {"align":"wide","layout":{"type":"constrained","contentSize":"680px","justifyContent":"left"}} -->
 	<div class="wp-block-group alignwide">
-		<!-- wp:paragraph {"className":"rv-kicker","style":{"typography":{"fontSize":"0.85rem","fontWeight":"700"}},"textColor":"himmel"} -->
-		<p class="rv-kicker has-himmel-color has-text-color" style="font-size:0.85rem;font-weight:700">Hallenradsport seit 1924</p>
+		<!-- wp:paragraph {"className":"rv-kicker","style":{"typography":{"fontSize":"var:preset|font-size|x-small","fontWeight":"700"}},"textColor":"himmel"} -->
+		<p class="rv-kicker has-himmel-color has-text-color" style="font-size:var(--wp--preset--font-size--x-small);font-weight:700">Hallenradsport seit 1924</p>
 		<!-- /wp:paragraph -->
 		<!-- wp:heading {"textColor":"base","fontSize":"hero"} -->
 		<h2 class="wp-block-heading has-base-color has-text-color has-hero-font-size">Zwei Räder. <em>Ein Verein.</em></h2>
