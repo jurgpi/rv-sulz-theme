@@ -228,8 +228,19 @@ function rv_sulz_fp_query_data( $parsed_block ) {
 	}
 	foreach ( array( 1, 2 ) as $n ) {
 		if ( rv_sulz_has_class( $a, "rv-q-col-$n" ) ) {
-			return rv_sulz_set_query( $parsed_block, (int) rv_sulz_fp( "rv_fp_col{$n}_cat" ), (int) rv_sulz_fp( "rv_fp_col{$n}_count" ), 0 );
+			$parsed_block = rv_sulz_set_query( $parsed_block, (int) rv_sulz_fp( "rv_fp_col{$n}_cat" ), (int) rv_sulz_fp( "rv_fp_col{$n}_count" ), 0 );
+			// Beiträge, die oben schon als Top-Kachel stehen, nicht noch einmal zeigen.
+			$parsed_block['attrs']['query']['rvExclude'] = rv_sulz_fp_hero_ids();
+			return $parsed_block;
 		}
+	}
+	// Beitragsseite: „Weitere Neuigkeiten“ ohne den gerade gelesenen Beitrag.
+	if ( rv_sulz_has_class( $a, 'rv-q-related' ) ) {
+		$current = is_singular() ? (int) get_queried_object_id() : 0;
+		if ( $current ) {
+			$parsed_block['attrs']['query']['rvExclude'] = array( $current );
+		}
+		return $parsed_block;
 	}
 	if ( rv_sulz_has_class( $a, 'rv-q-grid' ) ) {
 		$grid_cat = (int) rv_sulz_fp( 'rv_fp_grid_cat' );
@@ -240,6 +251,54 @@ function rv_sulz_fp_query_data( $parsed_block ) {
 	return $parsed_block;
 }
 add_filter( 'render_block_data', 'rv_sulz_fp_query_data' );
+
+/**
+ * IDs der Beiträge, die als Top-Kacheln erscheinen (gleiche Abfrage wie die Kacheln: die neuesten 3).
+ *
+ * @return int[]
+ */
+function rv_sulz_fp_hero_ids() {
+	static $ids = null;
+	if ( null !== $ids ) {
+		return $ids;
+	}
+	$ids = array();
+	if ( ! rv_sulz_fp( 'rv_fp_show_hero' ) ) {
+		return $ids;
+	}
+	$args = array(
+		'post_type'           => 'post',
+		'post_status'         => 'publish',
+		'posts_per_page'      => 3,
+		'orderby'             => 'date',
+		'order'               => 'DESC',
+		'fields'              => 'ids',
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+	);
+	$cat = (int) rv_sulz_fp( 'rv_fp_hero_cat' );
+	if ( $cat ) {
+		$args['cat'] = $cat;
+	}
+	$ids = array_map( 'intval', get_posts( $args ) );
+	return $ids;
+}
+
+/**
+ * Ausschlussliste (rvExclude) aus dem Block-Kontext in die Abfrage übernehmen.
+ *
+ * @param array    $query Abfrage-Argumente.
+ * @param WP_Block $block Block „Beitragsliste“.
+ * @return array
+ */
+function rv_sulz_fp_query_exclude( $query, $block ) {
+	if ( ! empty( $block->context['query']['rvExclude'] ) && is_array( $block->context['query']['rvExclude'] ) ) {
+		$not_in                = isset( $query['post__not_in'] ) ? (array) $query['post__not_in'] : array();
+		$query['post__not_in'] = array_values( array_unique( array_merge( $not_in, array_map( 'intval', $block->context['query']['rvExclude'] ) ) ) );
+	}
+	return $query;
+}
+add_filter( 'query_loop_block_query_vars', 'rv_sulz_fp_query_exclude', 10, 2 );
 
 /**
  * Die Beitragsliste und die Seitennummerierung lesen die Abfrage aus dem Block-Kontext.

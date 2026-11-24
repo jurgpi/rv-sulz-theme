@@ -13,8 +13,8 @@
 
 $rv_cols = array( 1 => 21, 2 => 22 );
 ?>
-<!-- wp:group {"align":"full","className":"rv-sec-news","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|70"},"margin":{"top":"0"}}},"layout":{"type":"constrained","contentSize":"1240px"}} -->
-<div class="wp-block-group alignfull rv-sec-news" style="margin-top:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--70)">
+<!-- wp:group {"align":"full","className":"rv-sec-news","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0"}}},"layout":{"type":"constrained","contentSize":"1240px"}} -->
+<div class="wp-block-group alignfull rv-sec-news" style="margin-top:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
 	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|60","top":"var:preset|spacing|60"}}}} -->
 	<div class="wp-block-columns alignwide">
 	<?php

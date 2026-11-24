@@ -8,6 +8,23 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.12.0] – 2026-11-24
+### Geändert
+- Startseite: Die News-Spalten Kunstrad | Radball zeigen keine Beiträge mehr, die schon als Top-Kachel
+  oben stehen (vorher erschien ein Beitrag bis zu dreimal).
+- Startseite am Handy: die zwei kleinen Top-Kacheln stehen nebeneinander (je ein Sparten-Abzeichen);
+  „Probier’s aus“ beginnt dadurch bei ca. 720 statt 1090 px, also auf dem ersten Bildschirm.
+- Einheitlicher Abschnitts-Abstand (Rolle --rv-section-space, Stufe XL) für „Probier’s aus“,
+  Trainingszeiten, News-Spalten und Archiv/Chronik; das blaue Sparten-Band bleibt großzügiger.
+- Sparten-Abzeichen überall gleich (Top-Kacheln, Karten, Beitragskopf, Archiv): gefüllte Pille mit fester
+  Sparten-Farbe, 13px. Farben abgedunkelt für ausreichenden Kontrast (Kunstrad 6,5:1, Radball 8,1:1,
+  Veranstaltung 5,8:1, Allgemein 6,0:1; vorher Grün 4,3:1 und Orange 3,5:1). Datum in Karten immer
+  in eigener Zeile.
+- Termine: dekorativer Farbstreifen links an Terminen (Liste und Monatsansicht) entfernt – Karte bzw.
+  Fläche tragen die Gruppe allein.
+### Behoben
+- „Weitere Neuigkeiten“ unter einem Beitrag zeigt den gerade gelesenen Beitrag nicht mehr.
+
 ## [1.11.0] – 2026-11-24
 ### Geändert
 - Typografie mit fester Rollen-Skala statt rund 40 Einzelwerten: Etikett 13px, Meta 15px, Text 18px

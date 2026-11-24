@@ -149,7 +149,6 @@ html.rv-dark .simcal-default-calendar-grid .simcal-today > div { border-color: v
 	margin: 0 0 .3rem !important;
 	padding: .25rem .45rem !important;
 	border-radius: 8px;
-	border-left: 3px solid var(--rv-cal-blue);
 	background: var(--rv-cal-soft) !important;
 	color: var(--rv-cal-blue-text) !important;
 	font-size: .78rem !important;
@@ -287,20 +286,13 @@ html.rv-dark body .qtip .simcal-event-address { color: var(--rv-dark-muted, #A3A
 .simcal-default-calendar-list .simcal-event {
 	position: relative;
 	margin: 0 0 .75rem !important;
-	padding: 1.1rem 1.25rem 1.1rem 1.5rem !important;
+	padding: 1.1rem 1.25rem !important;
 	border: 1px solid var(--rv-cal-line) !important;
 	border-radius: 18px;
 	background: var(--rv-cal-card) !important;
 	box-shadow: var(--wp--preset--shadow--soft, 0 6px 20px rgba(20, 33, 61, .07));
 	overflow: hidden;
 	transition: transform .25s ease, box-shadow .25s ease;
-}
-.simcal-default-calendar-list .simcal-event::before {
-	content: "";
-	position: absolute;
-	inset: 0 auto 0 0;
-	width: 5px;
-	background: var(--rv-cal-blue);
 }
 .simcal-default-calendar-list .simcal-event:hover { transform: translateY(-2px); box-shadow: var(--wp--preset--shadow--lift, 0 14px 30px rgba(20, 33, 61, .12)); }
 html.rv-dark .simcal-default-calendar-list .simcal-event { box-shadow: none; }

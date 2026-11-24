@@ -31,7 +31,7 @@
 .rv-mm h3 { font-family: var(--mm-display); text-transform: uppercase; font-weight: 800; letter-spacing: .01em; }
 
 /* ---------- Probier's aus ---------- */
-.rv-mm-start { background: var(--mm-bg); padding-block: clamp(3rem, 6vw, 5.5rem) clamp(3rem, 6vw, 5rem); border-bottom: 1px solid var(--mm-line); }
+.rv-mm-start { background: var(--mm-bg); padding-block: var(--rv-section-space); border-bottom: 1px solid var(--mm-line); }
 .rv-mm-start .rv-mm-wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
 .rv-mm-start h2 { font-size: clamp(2.6rem, 5.2vw, 4.6rem); }
 .rv-mm-start h2 em { font-style: normal; color: var(--mm-blue); }
@@ -67,7 +67,7 @@
 .rv-mm-step p { margin: 0; color: var(--mm-muted); font-size: var(--rv-type-meta); line-height: 1.5; }
 
 /* ---------- Trainingszeiten ---------- */
-.rv-mm-training { background: var(--mm-area); padding-block: clamp(3rem, 6vw, 5rem); scroll-margin-top: 5rem; }
+.rv-mm-training { background: var(--mm-area); padding-block: var(--rv-section-space); scroll-margin-top: 5rem; }
 .rv-mm-training h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 2rem; }
 .rv-mm-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); gap: 1.5rem; }
 .rv-mm-plan {
@@ -92,7 +92,7 @@
 .rv-mm-link:hover { text-decoration: underline !important; text-underline-offset: .2em; }
 
 /* ---------- Archiv & Chronik ---------- */
-.rv-mm-more { background: var(--mm-bg); padding-block: clamp(2.5rem, 5vw, 4rem); }
+.rv-mm-more { background: var(--mm-bg); padding-block: var(--rv-section-space); }
 .rv-mm-more .rv-mm-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); gap: 1.5rem; }
 .rv-mm-tile {
 	position: relative; isolation: isolate; overflow: hidden;

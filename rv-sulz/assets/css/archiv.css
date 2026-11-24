@@ -60,10 +60,10 @@
 	background: var(--rv-chip, var(--rv-a-blue)); opacity: .9;
 }
 .rv-chip:first-child::before { display: none; }
-.rv-chip--kunstrad { --rv-chip: #2E8B57; }
-.rv-chip--radball { --rv-chip: #1F4D9A; }
-.rv-chip--veranstaltung { --rv-chip: #E08A1E; }
-.rv-chip--allgemein { --rv-chip: #8A94A8; }
+.rv-chip--kunstrad { --rv-chip: var(--rv-sparte-kunstrad, #1E6B43); }
+.rv-chip--radball { --rv-chip: var(--rv-sparte-radball, #1F4D9A); }
+.rv-chip--veranstaltung { --rv-chip: var(--rv-sparte-veranstaltung, #9A5410); }
+.rv-chip--allgemein { --rv-chip: var(--rv-sparte-allgemein, #5A6478); }
 .rv-chip:hover { border-color: var(--rv-a-blue); transform: translateY(-1px); }
 .rv-chip.is-active { background: var(--rv-a-blue); border-color: var(--rv-a-blue); color: #fff !important; }
 .rv-chip.is-active::before { background: #fff; }
@@ -121,14 +121,16 @@
 }
 .rv-acard__text { padding: 1rem 1.15rem 1.25rem; display: flex; flex-direction: column; gap: .5rem; }
 .rv-acard__meta { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; font-size: var(--rv-type-meta); color: var(--rv-a-muted); }
+.rv-acard__meta time { flex-basis: 100%; }
 .rv-acard__sparte {
-	display: inline-block; padding: .18rem .6rem; border-radius: 999px;
-	background: var(--rv-a-blue); color: #fff;
-	font-size: var(--rv-type-label); font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+	/* wie .taxonomy-category-Abzeichen in style.css */
+	display: inline-block; padding: .2rem .65rem; border-radius: 999px;
+	background: var(--rv-sparte-radball, #1F4D9A); color: #fff;
+	font-size: var(--rv-type-label); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; line-height: 1.5;
 }
-.rv-acard__sparte--kunstrad { background: #2E8B57; }
-.rv-acard__sparte--veranstaltung { background: #C8741A; }
-.rv-acard__sparte--allgemein { background: #6B768C; }
+.rv-acard__sparte--kunstrad { background: var(--rv-sparte-kunstrad, #1E6B43); }
+.rv-acard__sparte--veranstaltung { background: var(--rv-sparte-veranstaltung, #9A5410); }
+.rv-acard__sparte--allgemein { background: var(--rv-sparte-allgemein, #5A6478); }
 .rv-acard__titel {
 	margin: 0; font-size: var(--rv-type-title); line-height: 1.2;
 	display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;

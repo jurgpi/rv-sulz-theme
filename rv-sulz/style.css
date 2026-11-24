@@ -3,7 +3,7 @@ Theme Name: RV Sulz
 Theme URI: https://wordpress.rv-sulz.at/
 Author: RV Enzian Sulz
 Description: Modernes Block-Theme für den Radfahrverein ÖAMTC "Enzian" Sulz – Kunstrad, Radball und Wanderfahren. Enzianblau und Wappengrün, selbst gehostete Schriften (DSGVO-freundlich), voll im Website-Editor anpassbar.
-Version: 1.11.0
+Version: 1.12.0
 Requires at least: 6.6
 Update URI: https://github.com/jurgpi/rv-sulz-theme
 Tested up to: 6.8
@@ -28,6 +28,8 @@ Tags: block-patterns, full-site-editing, custom-logo, custom-colors, editor-styl
 	--rv-type-lead: var(--wp--preset--font-size--large, 1.25rem);
 	--rv-type-title: var(--wp--preset--font-size--title, 1.375rem);
 	--rv-type-title-lg: var(--wp--preset--font-size--x-large, 2rem);
+	/* Abstands-Rollen: Abschnitte einheitlich (Stufe XL), das blaue Band bleibt großzügiger (XXL) */
+	--rv-section-space: var(--wp--preset--spacing--60, clamp(2rem, 5vw, 3.5rem));
 }
 :where(h1, h2, h3, h4, h5, h6, .wp-block-post-title, .rv-mm h2, .rv-consent__title) { text-wrap: balance; }
 :where(p, li, dd, blockquote) { text-wrap: pretty; }
@@ -158,14 +160,32 @@ html { scroll-behavior: smooth; }
 .rv-tile .wp-block-post-title a::after { content: ""; position: absolute; inset: 0; }
 .rv-tile:not(:has(img)) { background: var(--wp--preset--gradient--enzian-nacht); }
 
-/* Kategorie-Pill */
-.rv-pill a, .rv-tile .wp-block-post-terms a {
-	display: inline-block; padding: .2rem .65rem; border-radius: 999px;
-	background: var(--wp--preset--color--enzian); color: #fff !important;
-	font-size: var(--rv-type-label); letter-spacing: .1em;
+/* =========================================================
+   Sparten-Abzeichen – EINE Gestaltung überall (Top-Kacheln, Karten, Beitragskopf, Archiv).
+   Farbe je Sparte als feste Kennung; alle mit weißer Schrift mindestens 5,7:1.
+   ========================================================= */
+:root {
+	--rv-sparte-kunstrad: #1E6B43;
+	--rv-sparte-radball: #1F4D9A;
+	--rv-sparte-veranstaltung: #9A5410;
+	--rv-sparte-allgemein: #5A6478;
 }
-.rv-pill .wp-block-post-terms__separator, .rv-tile .wp-block-post-terms__separator { display: none; }
-.rv-pill, .rv-tile .wp-block-post-terms { display: flex; gap: .35rem; flex-wrap: wrap; }
+.taxonomy-category.wp-block-post-terms { display: flex; gap: .35rem; flex-wrap: wrap; align-items: center; }
+.taxonomy-category.wp-block-post-terms .wp-block-post-terms__separator { display: none; }
+.taxonomy-category.wp-block-post-terms a {
+	--rv-sparte: var(--wp--preset--color--enzian);
+	display: inline-block; padding: .2rem .65rem; border-radius: 999px;
+	background: var(--rv-sparte); color: #fff !important; text-decoration: none;
+	font-size: var(--rv-type-label); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; line-height: 1.5;
+}
+.taxonomy-category.wp-block-post-terms a:hover { filter: brightness(1.15); }
+.taxonomy-category a[href*="/kunstrad/"] { --rv-sparte: var(--rv-sparte-kunstrad); }
+.taxonomy-category a[href*="/radball/"] { --rv-sparte: var(--rv-sparte-radball); }
+.taxonomy-category a[href*="/veranstaltung/"] { --rv-sparte: var(--rv-sparte-veranstaltung); }
+.taxonomy-category a[href*="/allgemein/"] { --rv-sparte: var(--rv-sparte-allgemein); }
+html.rv-dark main .taxonomy-category.wp-block-post-terms a { color: #fff !important; }
+/* Datum in Karten immer in eigener Zeile unter den Abzeichen (egal ob 1 oder 2 Abzeichen) */
+.rv-post-card .wp-block-post-date { flex-basis: 100%; }
 
 /* Glas-Karten auf dunklem Band */
 .rv-glass {
@@ -697,3 +717,19 @@ html.rv-dark .rv-consent__title { color: #fff; }
 
 /* Knopf-Rolle wie theme.json-Element „button“ */
 .rv-consent__btn { font-family: var(--wp--preset--font-family--display); font-weight: 600; font-size: 1.125rem; letter-spacing: .06em; text-transform: uppercase; line-height: 1.1; }
+
+
+/* =========================================================
+   Startseite am Handy: die zwei kleinen Top-Kacheln nebeneinander statt untereinander,
+   damit „Probier’s aus“ früher kommt (vorher ca. 950 px Kacheln).
+   ========================================================= */
+@media (max-width: 781px) {
+	.rv-q-hero-side .wp-block-post-template { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+	.rv-q-hero-side .wp-block-post-template > li { margin: 0 !important; }
+	.rv-q-hero-side .rv-tile { min-height: 190px !important; padding: .9rem !important; }
+	.rv-q-hero-side .rv-tile .wp-block-post-title { font-size: var(--rv-type-body) !important; line-height: 1.1; margin-bottom: 0; }
+	.rv-q-hero-side .rv-tile .rv-pill a { font-size: var(--rv-type-label); padding: .15rem .5rem; }
+	.rv-q-hero-side .rv-tile .wp-block-post-terms a ~ a,
+	.rv-q-hero-side .rv-tile .wp-block-post-terms__separator { display: none; }
+	.rv-tile--big { min-height: 320px !important; }
+}
