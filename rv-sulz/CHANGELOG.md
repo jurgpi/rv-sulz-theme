@@ -8,6 +8,14 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.9.0] – 2026-11-24
+### Neu
+- Einwilligungs-Banner für die Besucherstatistik: Google Analytics (Plugin „Site Kit“) lädt erst nach
+  „Erlauben“; vorher keine Verbindung zu Google und keine Cookies. „Ablehnen“ und „Erlauben“ sind
+  gleichwertig, Link zur Datenschutzerklärung. „Cookie-Einstellungen“ in der Fußzeile öffnet das Banner
+  wieder; beim Widerruf werden die Statistik-Cookies gelöscht. Wahl nur im Browser, 12 Monate gültig.
+  Ohne Statistik-Skript erscheinen weder Banner noch Link (inc/consent.php, assets/js/consent.js).
+
 ## [1.8.0] – 2026-11-24
 ### Neu
 - Startseite auf neue Mitglieder ausgerichtet. Neue Reihenfolge: Top-Beiträge → „Probier’s aus“

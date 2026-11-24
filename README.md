@@ -20,6 +20,7 @@ Modernes Vereinsdesign in Enzian-Blau, viele Einstellungen im Customizer, Dunkel
 - **Menüs und Fußbereich klassisch verwaltbar**: Pflege unter *Design → Menüs* und *Design → Widgets*,
   die Menü-Zuordnung bleibt beim Theme-Wechsel erhalten.
 - **Durchsuchbares Archiv** unter /archiv/: Jahres-Leiste, Filter nach Sparte, Suche und Beitragskarten mit Bild.
+- **Cookie-Banner** für Google Analytics: Statistik lädt erst nach Einwilligung, Widerruf über „Cookie-Einstellungen“.
 - **Updates direkt aus GitHub**: WordPress meldet neue Versionen, Update mit einem Klick.
 - **Dunkelmodus** nach Geräteeinstellung plus Umschalter, weißes Logo im Dunkelmodus.
 - **Termine** aus dem Plugin „Simple Calendar“ im Theme-Design (Monats- und Listenansicht).

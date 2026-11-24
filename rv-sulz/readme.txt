@@ -53,6 +53,9 @@ Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.
   Seiten → Erstellen → Titel „Impressum“ bzw. „Datenschutz“ (Adresse /impressum/, /datenschutz/) →
   oben rechts ⋮ → Code-Editor → Inhalt der Datei einfügen → zurück zum visuellen Editor → alle
   [Platzhalter] ersetzen → Veröffentlichen. Danach beide Seiten unter Design → Menüs in „Fußzeile unten“ aufnehmen.
+* Cookie-Banner (ab 1.9.0): Google Analytics aus „Site Kit“ wird automatisch blockiert, bis Besucher im
+  Banner „Erlauben“ wählen. Nichts einzustellen. Weitere Skripte blockieren: Filter rv_sulz_consent_handles
+  bzw. rv_sulz_consent_hosts. „Cookie-Einstellungen“ erscheint in der Fußzeile neben Kontakt/Impressum/Datenschutz.
 * Termine (Plugin „Simple Calendar“): Monats- und Listenansicht werden automatisch im Theme-Design
   gezeigt (assets/css/simple-calendar.css, inkl. Dunkelmodus und Handy). Nichts einzustellen.
 * Ehrenmitglieder: Seiten → Erstellen → Titel „Ehrenmitglieder“ (Adresse /ehrenmitglieder/) → Muster
