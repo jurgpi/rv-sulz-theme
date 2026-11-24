@@ -149,12 +149,13 @@ html.rv-dark .rv-mm {
 	--mm-soft: #1D3366;
 	--mm-line: #26385F;
 }
-html.rv-dark .rv-mm .rv-mm-start h2 em,
+/* .rv-mm und .rv-mm-start sitzen auf demselben Element – daher ohne Leerzeichen */
+html.rv-dark .rv-mm.rv-mm-start h2 em,
 html.rv-dark .rv-mm .rv-mm-num { color: var(--rv-dark-blue, #8FB3F2); }
 html.rv-dark .rv-mm .rv-mm-step:first-child .rv-mm-num { color: #fff; }
 html.rv-dark .rv-mm .rv-mm-btn--s,
 html.rv-dark .rv-mm .rv-mm-link { color: var(--rv-dark-blue, #8FB3F2) !important; border-color: var(--rv-dark-blue, #8FB3F2); }
-html.rv-dark .rv-mm .rv-mm-btn--p { color: #fff !important; }
+html.rv-dark .rv-mm .rv-mm-btn--p { color: #fff !important; box-shadow: 0 0 0 1px rgba(143, 179, 242, .55), 0 10px 24px -8px rgba(0, 0, 0, .6); }
 html.rv-dark .rv-mm .rv-mm-plan { box-shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px rgba(0, 0, 0, .3); }
 html.rv-dark .rv-mm .rv-mm-tile,
 html.rv-dark .rv-mm .rv-mm-tile h3 { color: #fff !important; }

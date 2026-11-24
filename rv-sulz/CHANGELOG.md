@@ -8,6 +8,19 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.13.1] – 2026-11-24
+### Behoben
+- Dunkelmodus: „das erste Training ist gratis.“ auf der Startseite war dunkelblau auf Nachtblau (2,2:1) –
+  der Selektor griff nicht; jetzt hellblau (8,1:1).
+- Archiv am Handy: Das Suchfeld ragte über den Rand (Seite ließ sich seitlich schieben), „Suchen“ war
+  abgeschnitten und 37px hoch – jetzt volle Breite, Knopf 44px.
+- Touch-Geräte: Facebook-/Instagram-Symbole im Fußbereich jetzt 44 × 44 (vorher 24 × 24).
+- Dachzeile auf dem blauen Verlauf etwas heller (5,1:1 statt 4,3:1 am hellen Ende).
+- Dunkelmodus: Hauptknöpfe (Schnuppertraining, Formular, Cookie-Banner) mit hellem Rand, damit sie sich
+  vom dunklen Hintergrund abheben.
+- Kontaktseite am Handy: „Hier trainieren wir“ steht vor dem Formular (vorher erst nach ca. 1500px);
+  Kartenlinks auf Touch-Geräten 44px hoch.
+
 ## [1.13.0] – 2026-11-24
 ### Geändert
 - Ladezeit (inc/performance.php):

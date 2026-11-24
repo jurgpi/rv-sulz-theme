@@ -23,7 +23,7 @@
 .rv-archiv__intro strong { color: var(--rv-a-text); }
 .rv-archiv__suche {
 	position: relative; display: flex; align-items: center;
-	flex: 1 1 320px; max-width: 460px;
+	flex: 1 1 320px; max-width: 460px; min-width: 0;
 	background: var(--rv-a-card); border: 1.5px solid var(--rv-a-line);
 	border-radius: 999px; padding: .3rem .3rem .3rem 2.75rem;
 	box-shadow: var(--wp--preset--shadow--soft);
@@ -32,7 +32,7 @@
 .rv-archiv__suche:focus-within { border-color: var(--rv-a-blue); box-shadow: 0 0 0 4px rgba(31,77,154,.15); }
 .rv-archiv__lupe { position: absolute; left: 1rem; color: var(--rv-a-muted); pointer-events: none; }
 .rv-archiv__suche input {
-	flex: 1; min-width: 0; border: 0; background: transparent; outline: none;
+	flex: 1; min-width: 0; width: 0; border: 0; background: transparent; outline: none;
 	font: inherit; font-size: var(--rv-type-body); color: var(--rv-a-text); padding: .45rem 0;
 }
 .rv-archiv__suche input::-webkit-search-cancel-button { cursor: pointer; }
@@ -202,3 +202,11 @@ html.rv-dark .rv-archiv .rv-jahr.is-active { color: #fff !important; }
 
 /* Knopf-Rolle wie theme.json-Element „button“ */
 .rv-archiv__more, .rv-archiv__prev, .rv-archiv__suche button { font-family: var(--wp--preset--font-family--display); font-weight: 600; font-size: 1.125rem; letter-spacing: .06em; text-transform: uppercase; line-height: 1.1; }
+
+
+/* Suche am Handy: volle Breite, nichts ragt über den Rand, Knopf mindestens 44px hoch */
+@media (max-width: 640px) {
+	.rv-archiv__suche { flex-basis: 100%; width: 100%; max-width: none; }
+	.rv-archiv__suche button { min-height: 44px; padding-inline: .9rem; letter-spacing: .04em; }
+}
+@media (pointer: coarse) { .rv-archiv__suche button { min-height: 44px; } }

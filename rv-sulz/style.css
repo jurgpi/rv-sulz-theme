@@ -3,7 +3,7 @@ Theme Name: RV Sulz
 Theme URI: https://wordpress.rv-sulz.at/
 Author: RV Enzian Sulz
 Description: Modernes Block-Theme für den Radfahrverein ÖAMTC "Enzian" Sulz – Kunstrad, Radball und Wanderfahren. Enzianblau und Wappengrün, selbst gehostete Schriften (DSGVO-freundlich), voll im Website-Editor anpassbar.
-Version: 1.13.0
+Version: 1.13.1
 Requires at least: 6.6
 Update URI: https://github.com/jurgpi/rv-sulz-theme
 Tested up to: 6.8
@@ -87,6 +87,8 @@ html { scroll-behavior: smooth; }
 	display: inline-flex; align-items: center; gap: .5rem;
 	letter-spacing: .14em; text-transform: uppercase;
 }
+/* Dachzeile auf dem blauen Verlauf: helleres Himmelblau, auch am hellen Ende ≥ 5:1 */
+.rv-hero .rv-kicker.has-himmel-color { color: #B4CEFA !important; }
 .rv-kicker::before { content: ""; width: 28px; height: 3px; border-radius: 3px; background: currentColor; }
 
 /* ---------- Karten ---------- */
@@ -707,7 +709,8 @@ html.rv-dark .rv-consent__title { color: #fff; }
 	.rv-header .wp-block-navigation__responsive-container-close {
 		display: inline-grid; place-items: center; min-width: 44px; min-height: 44px; margin: -10px;
 	}
-	.rv-header .wp-block-social-link-anchor { display: inline-grid; place-items: center; min-width: 44px; min-height: 44px; margin: -10px; }
+	.rv-header .wp-block-social-link-anchor,
+	.rv-footer .wp-block-social-link-anchor { display: inline-grid; place-items: center; min-width: 44px; min-height: 44px; margin: -10px; }
 	.rv-theme-toggle { width: 44px; height: 44px; }
 	[class*="rv-l-col-"] a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: .6rem; margin-inline: -.6rem; }
 	.rv-footer-links a, .rv-footer-links .rv-consent-open { display: inline-flex; align-items: center; min-height: 44px; }
@@ -733,3 +736,6 @@ html.rv-dark .rv-consent__title { color: #fff; }
 	.rv-q-hero-side .rv-tile .wp-block-post-terms__separator { display: none; }
 	.rv-tile--big { min-height: 320px !important; }
 }
+
+/* Dunkelmodus: Absenden-Knopf hebt sich mit hellem Rand vom dunklen Hintergrund ab */
+html.rv-dark .wpcf7 .wpcf7-submit, html.rv-dark .rv-consent__btn { box-shadow: 0 0 0 1px rgba(143, 179, 242, .55); }

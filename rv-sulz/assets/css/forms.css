@@ -117,3 +117,11 @@ html.rv-dark .rv-kontakt-role { color: var(--rv-dark-text, #E3E9F5); }
 
 /* Knopf-Rolle wie theme.json-Element „button“: Barlow Condensed, Großbuchstaben */
 .wpcf7 input[type="submit"], .wpcf7 .wpcf7-submit { font-family: var(--wp--preset--font-family--display); font-weight: 600; font-size: 1.125rem; letter-spacing: .06em; text-transform: uppercase; line-height: 1.1; }
+
+/* Kontaktseite am Handy: „Hier trainieren wir“ (kurz) vor dem langen Formular – das Wo zuerst */
+@media (max-width: 781px) {
+	.rv-kontakt .rv-kontakt-info { order: -1; }
+}
+@media (pointer: coarse) {
+	.rv-kontakt-list a { display: inline-flex; align-items: center; min-height: 44px; }
+}
