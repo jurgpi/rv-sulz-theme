@@ -1,0 +1,256 @@
+/* =========================================================
+   Chronik-Seite (eigener HTML-Block mit Klasse .rvc) im RV-Sulz-Design.
+   Der Block bringt eigenes CSS mit; "body .rvc …" ist spezifischer und gewinnt.
+   Inhalt (Texte, Namen, Bilder) bleibt unverändert im Block.
+   ========================================================= */
+
+body .rvc {
+	--rvc-blue: var(--wp--preset--color--enzian, #1F4D9A);
+	--rvc-accent: var(--wp--preset--color--enzian, #1F4D9A);
+	--rvc-soft: var(--wp--preset--color--enzian-hell, #E8EFFA);
+	--rvc-card: #fff;
+	--rvc-border: var(--wp--preset--color--line, #DDE3EE);
+	--rvc-head: var(--wp--preset--color--kontrast, #14213D);
+	--rvc-muted: var(--wp--preset--color--grau, #5A6478);
+	--rvc-gold: #D4A72C;
+	--rvc-silver: #A3ADB8;
+	--rvc-bronze: #B8763F;
+	--rvc-display: var(--wp--preset--font-family--display, inherit);
+	--rvc-shadow: 0 6px 20px rgba(20, 33, 61, .07);
+	--rvc-shadow-lift: 0 16px 34px rgba(20, 33, 61, .14);
+}
+html.rv-dark body .rvc {
+	--rvc-blue: var(--rv-dark-blue, #8FB3F2);
+	--rvc-accent: #3B6CC0;
+	--rvc-soft: #1C3366;
+	--rvc-card: var(--rv-dark-card, #15264D);
+	--rvc-border: #26385F;
+	--rvc-head: var(--rv-dark-text, #E3E9F5);
+	--rvc-muted: var(--rv-dark-muted, #A3AFC7);
+	--rvc-shadow: none;
+	--rvc-shadow-lift: 0 16px 34px rgba(0, 0, 0, .4);
+}
+
+/* ---------- Sprungmarken oben ---------- */
+body .rvc .rvc-nav { gap: .6rem; margin-bottom: 1rem; }
+body .rvc .rvc-nav a {
+	padding: .55rem 1.2rem;
+	border: 2px solid var(--rvc-accent);
+	background: transparent;
+	color: var(--rvc-blue) !important;
+	font-family: var(--rvc-display);
+	font-size: 1rem;
+	font-weight: 600;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+}
+body .rvc .rvc-nav a:first-child,
+body .rvc .rvc-nav a:hover,
+body .rvc .rvc-nav a:focus-visible { background: var(--rvc-accent); border-color: var(--rvc-accent); color: #fff !important; }
+html.rv-dark body .rvc .rvc-nav a { border-color: var(--rvc-blue); }
+
+/* ---------- Bereichsüberschriften ---------- */
+body .rvc h2.rvc-h {
+	margin: clamp(2.5rem, 5vw, 4rem) 0 .4rem;
+	font-family: var(--rvc-display);
+	font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem);
+	font-weight: 800;
+	line-height: 1.05;
+	letter-spacing: .01em;
+	text-transform: uppercase;
+	color: var(--rvc-blue) !important;
+	scroll-margin-top: 6rem;
+}
+body .rvc h2.rvc-h::before { width: 8px; height: 1.1em; border-radius: 4px; background: var(--rvc-accent); }
+body .rvc .rvc-sub { margin-bottom: 1.6rem; font-size: .9rem; }
+
+/* ---------- Größte Erfolge ---------- */
+body .rvc .rvc-grid { gap: 1.4rem; }
+body .rvc .rvc-card {
+	position: relative;
+	border-radius: 18px;
+	border-color: var(--rvc-border);
+	box-shadow: var(--rvc-shadow);
+	transition: transform .3s ease, box-shadow .3s ease;
+}
+body .rvc .rvc-card:hover { transform: translateY(-5px); box-shadow: var(--rvc-shadow-lift); }
+body .rvc .rvc-card img { transition: transform .6s ease; }
+body .rvc .rvc-card:hover img { transform: scale(1.04); }
+body .rvc .rvc-card-b { position: relative; z-index: 1; padding: 1.1rem 1.2rem 1.25rem; background: var(--rvc-card); border-top: 4px solid var(--rvc-accent); }
+body .rvc .rvc-card-b strong {
+	font-family: var(--rvc-display);
+	font-size: 1.3rem;
+	font-weight: 800;
+	line-height: 1.1;
+	text-transform: uppercase;
+	color: var(--rvc-head);
+}
+body .rvc .rvc-team { color: var(--rvc-blue); }
+body .rvc .rvc-medals { margin-top: .7rem; font-size: .84rem; color: var(--rvc-muted); }
+body .rvc .rvc-medals li { margin: .35rem 0; }
+body .rvc .rvc-m { width: .85rem; height: .85rem; box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .18), 0 0 0 2px var(--rvc-card), 0 0 0 3px currentColor; color: var(--rvc-border); }
+body .rvc .rvc-m.g { color: var(--rvc-gold); }
+body .rvc .rvc-m.s { color: var(--rvc-silver); }
+body .rvc .rvc-m.b { color: var(--rvc-bronze); }
+
+/* ---------- Obmänner ---------- */
+body .rvc .rvc-obm { gap: 1.1rem; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+body .rvc .rvc-o {
+	position: relative;
+	overflow: hidden;
+	padding: 1.4rem .8rem 1.1rem;
+	border-radius: 18px;
+	border-color: var(--rvc-border);
+	background: var(--rvc-card);
+	box-shadow: var(--rvc-shadow);
+	transition: transform .3s ease, box-shadow .3s ease;
+}
+body .rvc .rvc-o::before {
+	content: "";
+	position: absolute;
+	inset: 0 0 auto;
+	height: 4.2rem;
+	background: linear-gradient(135deg, var(--wp--preset--color--enzian, #1F4D9A), var(--wp--preset--color--nacht, #0C1E44));
+}
+body .rvc .rvc-o > * { position: relative; }
+body .rvc .rvc-o:hover { transform: translateY(-4px); box-shadow: var(--rvc-shadow-lift); }
+body .rvc .rvc-o img,
+body .rvc .rvc-o .rvc-ph {
+	width: 96px;
+	height: 120px;
+	border: 4px solid var(--rvc-card);
+	border-radius: 14px;
+	box-shadow: 0 6px 16px rgba(12, 30, 68, .2);
+	filter: none;
+	background: var(--rvc-soft);
+}
+body .rvc .rvc-o .rvc-ph { color: var(--rvc-muted); }
+body .rvc .rvc-o strong {
+	font-family: var(--rvc-display);
+	font-size: 1.1rem;
+	font-weight: 800;
+	line-height: 1.1;
+	text-transform: uppercase;
+	color: var(--rvc-head);
+}
+body .rvc .rvc-o span { margin-top: .25rem; font-size: .82rem; font-weight: 600; color: var(--rvc-blue); }
+body .rvc .rvc-o em {
+	margin-top: .55rem;
+	padding: .15rem .7rem;
+	background: var(--rvc-accent);
+	font-size: .72rem;
+	letter-spacing: .03em;
+}
+
+/* ---------- Vereinschronik (Zeitleiste) ---------- */
+body .rvc .rvc-tl { margin-top: 1.8rem; padding-left: 2.4rem; }
+body .rvc .rvc-tl::before {
+	left: .7rem;
+	top: .6rem;
+	bottom: .6rem;
+	width: 3px;
+	border-radius: 3px;
+	background: linear-gradient(180deg, var(--wp--preset--color--nacht, #0C1E44), var(--rvc-accent) 12%, var(--rvc-accent) 88%, var(--rvc-soft));
+}
+html.rv-dark body .rvc .rvc-tl::before { background: linear-gradient(180deg, var(--rvc-soft), var(--rvc-accent) 12%, var(--rvc-accent) 88%, var(--rvc-soft)); }
+body .rvc .rvc-tl > li {
+	margin: 0 0 1.1rem;
+	padding: 1rem 1.2rem 1.05rem;
+	border: 1px solid var(--rvc-border);
+	border-radius: 16px;
+	background: var(--rvc-card);
+	box-shadow: var(--rvc-shadow);
+	transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+body .rvc .rvc-tl > li:hover { transform: translateX(4px); border-color: var(--rvc-accent); box-shadow: var(--rvc-shadow-lift); }
+body .rvc .rvc-tl > li::before {
+	left: -2.15rem;
+	top: 1.25rem;
+	width: 1rem;
+	height: 1rem;
+	border: 3px solid var(--rvc-card);
+	background: var(--rvc-accent);
+	box-shadow: 0 0 0 3px var(--rvc-accent);
+}
+/* Kleine Pfeilspitze von der Karte zur Linie */
+body .rvc .rvc-tl > li::after {
+	content: "";
+	position: absolute;
+	left: -7px;
+	top: 1.35rem;
+	width: 12px;
+	height: 12px;
+	border-left: 1px solid var(--rvc-border);
+	border-bottom: 1px solid var(--rvc-border);
+	background: var(--rvc-card);
+	transform: rotate(45deg);
+	transition: border-color .25s ease;
+}
+body .rvc .rvc-tl > li:hover::after { border-color: var(--rvc-accent); }
+body .rvc .rvc-y {
+	margin-bottom: .35rem;
+	font-family: var(--rvc-display);
+	font-size: 1.75rem;
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: .01em;
+	color: var(--rvc-blue);
+}
+/* Gründung hervorheben */
+body .rvc .rvc-tl > li:first-child {
+	border: 0;
+	background: linear-gradient(135deg, var(--wp--preset--color--enzian, #1F4D9A), var(--wp--preset--color--nacht, #0C1E44));
+	color: #fff;
+}
+body .rvc .rvc-tl > li:first-child::after { background: var(--wp--preset--color--enzian, #1F4D9A); border-color: transparent; }
+body .rvc .rvc-tl > li:first-child .rvc-y { font-size: 2.2rem; color: #fff; }
+body .rvc .rvc-tl > li:first-child a { color: #fff; }
+body .rvc .rvc-tl > li:first-child .rvc-aus { background: rgba(255, 255, 255, .1); }
+body .rvc .rvc-tl > li:first-child .rvc-aus dt { color: #fff; }
+body .rvc .rvc-tl p { margin: .3rem 0; }
+body .rvc .rvc-aus { margin: .7rem 0; padding: .9rem 1.1rem; border-radius: 12px; background: var(--rvc-soft); }
+
+/* Sanftes Einblenden beim Scrollen (nur moderne Browser, nicht bei „Bewegung reduzieren“) */
+@supports (animation-timeline: view()) {
+	@media (prefers-reduced-motion: no-preference) {
+		body .rvc .rvc-tl > li,
+		body .rvc .rvc-card,
+		body .rvc .rvc-o {
+			animation: rvc-in linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 40%;
+		}
+	}
+}
+@keyframes rvc-in {
+	from { opacity: 0; translate: 0 24px; }
+	to { opacity: 1; translate: 0 0; }
+}
+
+@media (min-width: 900px) {
+	/* Jahreszahl links neben der Linie */
+	body .rvc .rvc-tl { padding-left: 9rem; }
+	body .rvc .rvc-tl::before { left: 7.3rem; }
+	body .rvc .rvc-tl > li::before { left: -2.15rem; }
+	body .rvc .rvc-y {
+		position: absolute;
+		left: -9rem;
+		top: 1rem;
+		width: 6.2rem;
+		margin: 0;
+		text-align: right;
+		font-size: 1.9rem;
+	}
+	body .rvc .rvc-tl > li:first-child .rvc-y { position: static; width: auto; text-align: left; }
+}
+
+@media (max-width: 600px) {
+	body .rvc .rvc-tl { padding-left: 1.9rem; }
+	body .rvc .rvc-tl::before { left: .5rem; }
+	body .rvc .rvc-tl > li { padding: .9rem 1rem; }
+	body .rvc .rvc-tl > li::before { left: -1.75rem; }
+	body .rvc .rvc-y { font-size: 1.5rem; }
+	body .rvc .rvc-card-b strong { font-size: 1.1rem; }
+	body .rvc .rvc-aus { grid-template-columns: 1fr; }
+	body .rvc .rvc-aus dd { margin-bottom: .35rem; }
+}

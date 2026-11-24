@@ -3,7 +3,7 @@ Theme Name: RV Sulz
 Theme URI: https://wordpress.rv-sulz.at/
 Author: RV Enzian Sulz
 Description: Modernes Block-Theme für den Radfahrverein ÖAMTC "Enzian" Sulz – Kunstrad, Radball und Wanderfahren. Enzianblau und Wappengrün, selbst gehostete Schriften (DSGVO-freundlich), voll im Website-Editor anpassbar.
-Version: 1.6.1
+Version: 1.7.0
 Requires at least: 6.6
 Update URI: https://github.com/jurgpi/rv-sulz-theme
 Tested up to: 6.8
@@ -354,4 +354,259 @@ html.rv-dark .rv-footer .rv-widget-title, html.rv-dark .rv-footer .rv-widget a {
 /* Sind „Sport“/„Verein“ ausgeblendet: „Mitmachen“ nicht über die ganze Breite ziehen, sondern rechts */
 @media (min-width: 782px) {
 	.rv-footer .rv-fcol-4 { max-width: 22rem; margin-left: auto; }
+}
+
+/* =========================================================
+   Ehrenmitglieder (Muster „Ehrenmitglieder“)
+   Optional: Bild-Block als erstes Element einer Karte = Foto statt Abzeichen.
+   ========================================================= */
+.rv-honor-intro { max-width: 46rem; color: var(--wp--preset--color--grau); }
+.rv-honor-card {
+	position: relative;
+	overflow: hidden;
+	padding: 4.6rem 1.1rem 1.3rem;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 18px;
+	background: var(--wp--preset--color--base);
+	box-shadow: var(--wp--preset--shadow--soft, 0 6px 20px rgba(20,33,61,.07));
+	text-align: center;
+	transition: transform .3s ease, box-shadow .3s ease;
+}
+.rv-honor-card:hover { transform: translateY(-4px); box-shadow: var(--wp--preset--shadow--lift, 0 16px 34px rgba(20,33,61,.14)); }
+.rv-honor-card::before {
+	content: "";
+	position: absolute;
+	inset: 0 0 auto;
+	height: 3.6rem;
+	background: linear-gradient(135deg, var(--wp--preset--color--enzian), var(--wp--preset--color--nacht));
+}
+/* Abzeichen (Stern) auf dem blauen Band */
+.rv-honor-card::after {
+	content: "";
+	position: absolute;
+	top: 1.5rem;
+	left: 50%;
+	width: 3.6rem;
+	height: 3.6rem;
+	margin-left: -1.8rem;
+	border: 4px solid var(--wp--preset--color--base);
+	border-radius: 50%;
+	background:
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z'/%3E%3C/svg%3E") center / 55% no-repeat,
+		linear-gradient(135deg, #E2B53E, #B8861F);
+	box-shadow: 0 6px 16px rgba(12, 30, 68, .25);
+}
+.rv-honor-card > * { position: relative; z-index: 1; margin: 0 !important; }
+.rv-honor-card .rv-honor-name {
+	margin-top: .6rem !important;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: 1.35rem;
+	font-weight: 800;
+	line-height: 1.1;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--kontrast);
+}
+.rv-honor-card .rv-honor-since { font-size: .85rem; font-weight: 700; color: var(--wp--preset--color--enzian); }
+.rv-honor-card .rv-honor-note { font-size: .85rem; line-height: 1.45; color: var(--wp--preset--color--grau); }
+.rv-honor-card .rv-honor-note:empty { display: none; }
+/* Mit Foto: Foto statt Abzeichen */
+.rv-honor-card:has(> .wp-block-image) { padding-top: 1.4rem; }
+.rv-honor-card:has(> .wp-block-image)::before { height: 5rem; }
+.rv-honor-card:has(> .wp-block-image)::after { display: none; }
+.rv-honor-card > .wp-block-image img {
+	width: 132px;
+	height: 160px;
+	object-position: 50% 20%;
+	object-fit: cover;
+	border: 4px solid var(--wp--preset--color--base);
+	border-radius: 14px;
+	box-shadow: 0 6px 16px rgba(12, 30, 68, .2);
+}
+html.rv-dark .rv-honor-intro { color: var(--rv-dark-muted); }
+html.rv-dark .rv-honor-card { background: var(--rv-dark-card); border-color: #26385F; box-shadow: none; }
+html.rv-dark .rv-honor-card::after,
+html.rv-dark .rv-honor-card > .wp-block-image img { border-color: var(--rv-dark-card); }
+html.rv-dark .rv-honor-card .rv-honor-name { color: var(--rv-dark-text) !important; }
+html.rv-dark .rv-honor-card .rv-honor-since { color: var(--rv-dark-blue); }
+html.rv-dark .rv-honor-card .rv-honor-note { color: var(--rv-dark-muted); }
+/* Editor: leerer Bild-Platzhalter in Fotogröße statt riesiger Fläche */
+.rv-honor-card .rv-honor-photo .components-placeholder,
+.rv-honor-card .rv-honor-photo .block-editor-media-placeholder {
+	width: 132px !important;
+	min-width: 0 !important;
+	height: 160px !important;
+	min-height: 0 !important;
+	margin: 0 auto;
+	padding: 0 !important;
+	border: 4px solid var(--wp--preset--color--base);
+	border-radius: 14px;
+	overflow: hidden;
+	box-shadow: 0 6px 16px rgba(12, 30, 68, .2);
+}
+.rv-honor-card .rv-honor-photo .components-placeholder__illustration { border-radius: 10px; }
+
+/* =========================================================
+   Vorstand (Muster „Vorstand“)
+   Karten wie bei den Ehrenmitgliedern; ohne Foto erscheint ein Personen-Symbol.
+   Erste Karte (.rv-board-lead, Obmann) breit, mit Foto links.
+   ========================================================= */
+.rv-board-intro { max-width: 46rem; color: var(--wp--preset--color--grau); }
+.rv-board-h { margin-top: var(--wp--preset--spacing--60) !important; }
+.rv-board-card {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: .3rem;
+	padding: 4.6rem 1.1rem 1.3rem;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 18px;
+	background: var(--wp--preset--color--base);
+	box-shadow: var(--wp--preset--shadow--soft, 0 6px 20px rgba(20,33,61,.07));
+	text-align: center;
+	transition: transform .3s ease, box-shadow .3s ease;
+}
+.rv-board-card:hover { transform: translateY(-4px); box-shadow: var(--wp--preset--shadow--lift, 0 16px 34px rgba(20,33,61,.14)); }
+.rv-board-card::before {
+	content: "";
+	position: absolute;
+	inset: 0 0 auto;
+	height: 3.6rem;
+	background: linear-gradient(135deg, var(--wp--preset--color--enzian), var(--wp--preset--color--nacht));
+}
+/* Personen-Symbol, solange kein Foto gewählt ist */
+.rv-board-card::after {
+	content: "";
+	position: absolute;
+	top: 1.5rem;
+	left: 50%;
+	width: 3.6rem;
+	height: 3.6rem;
+	margin-left: -1.8rem;
+	border: 4px solid var(--wp--preset--color--base);
+	border-radius: 50%;
+	background:
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%231F4D9A' d='M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.3-8 5.2V21h16v-1.8c0-2.9-3.6-5.2-8-5.2z'/%3E%3C/svg%3E") center 60% / 58% no-repeat,
+		var(--wp--preset--color--enzian-hell, #E8EFFA);
+	box-shadow: 0 6px 16px rgba(12, 30, 68, .25);
+}
+.rv-board-card > * { position: relative; z-index: 1; margin: 0 !important; }
+.rv-board-card .rv-board-role {
+	margin-top: .5rem !important;
+	padding: .2rem .75rem;
+	border-radius: 999px;
+	background: var(--wp--preset--color--enzian-hell, #E8EFFA);
+	color: var(--wp--preset--color--enzian);
+	font-size: .72rem;
+	font-weight: 700;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+}
+.rv-board-card.is-radball .rv-board-role { background: var(--wp--preset--color--nacht); color: #fff; }
+.rv-board-card.is-kunstrad .rv-board-role { background: var(--wp--preset--color--enzian); color: #fff; }
+.rv-board-card .rv-board-name {
+	margin-top: .3rem !important;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: 1.35rem;
+	font-weight: 800;
+	line-height: 1.1;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--kontrast);
+}
+.rv-board-card .rv-board-task { font-size: .85rem; line-height: 1.45; color: var(--wp--preset--color--grau); }
+.rv-board-card .rv-board-task:empty,
+.rv-board-card .rv-board-contact:empty { display: none; }
+.rv-board-card .rv-board-contact { margin-top: auto !important; padding-top: .5rem; font-size: .85rem; font-weight: 700; }
+.rv-board-card .rv-board-contact a { color: var(--wp--preset--color--enzian); text-decoration: none; }
+.rv-board-card .rv-board-contact a::after { content: " →"; }
+.rv-board-card .rv-board-contact a:hover { text-decoration: underline; }
+/* Mit Foto: Foto statt Symbol */
+.rv-board-card:has(> .wp-block-image) { padding-top: 1.4rem; }
+.rv-board-card:has(> .wp-block-image)::before { height: 5rem; }
+.rv-board-card:has(> .wp-block-image)::after { display: none; }
+.rv-board-card > .wp-block-image img {
+	width: 132px;
+	height: 160px;
+	object-position: 50% 20%;
+	object-fit: cover;
+	border: 4px solid var(--wp--preset--color--base);
+	border-radius: 14px;
+	box-shadow: 0 6px 16px rgba(12, 30, 68, .2);
+}
+/* Obmann: breite Karte */
+.rv-board-lead .rv-board-name { font-size: 1.8rem; }
+.rv-board-lead .rv-board-task { max-width: 32rem; font-size: .95rem; }
+@media (min-width: 700px) {
+	.rv-board-card.rv-board-lead {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		column-gap: 1.8rem;
+		row-gap: .35rem;
+		align-items: start;
+		justify-items: start;
+		align-content: center;
+		padding: 1.6rem 2rem 1.6rem 10.5rem;
+		text-align: left;
+	}
+	.rv-board-lead > * { grid-column: 2; }
+	.rv-board-lead::before { inset: 0 auto 0 0; width: 7.5rem; height: auto !important; }
+	.rv-board-lead::after { top: 50%; left: 3.75rem; margin-top: -1.8rem; }
+	.rv-board-lead:has(> .wp-block-image) { padding: 1.6rem 2rem; }
+	.rv-board-lead > .wp-block-image { grid-column: 1; grid-row: 1 / span 4; align-self: center; }
+	.rv-board-lead .rv-board-contact { margin-top: .2rem !important; }
+}
+/* Kassaprüfer als Namens-Chips */
+.rv-board-chips { display: flex; flex-wrap: wrap; gap: .6rem; padding: 0; list-style: none; }
+.rv-board-chips li {
+	margin: 0;
+	padding: .55rem 1.1rem;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 999px;
+	background: var(--wp--preset--color--base);
+	font-weight: 600;
+}
+/* Mitmach-Aufruf */
+.rv-board-cta {
+	gap: 1rem 2rem;
+	padding: 1.6rem 2rem;
+	border-radius: 18px;
+	background: linear-gradient(135deg, var(--wp--preset--color--enzian), var(--wp--preset--color--nacht));
+	color: #fff;
+}
+.rv-board-cta > .wp-block-group { flex: 1 1 18rem; }
+.rv-board-cta p { margin: 0; color: rgba(255, 255, 255, .85); }
+.rv-board-cta .rv-board-cta-title {
+	margin: 0;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: 1.6rem;
+	font-weight: 800;
+	text-transform: uppercase;
+	color: #fff !important;
+}
+html.rv-dark .rv-board-intro { color: var(--rv-dark-muted); }
+html.rv-dark .rv-board-card,
+html.rv-dark .rv-board-chips li { background: var(--rv-dark-card); border-color: #26385F; box-shadow: none; }
+html.rv-dark .rv-board-card::after,
+html.rv-dark .rv-board-card > .wp-block-image img { border-color: var(--rv-dark-card); }
+html.rv-dark .rv-board-card .rv-board-role { background: #1C3366; color: var(--rv-dark-blue); }
+html.rv-dark .rv-board-card.is-kunstrad .rv-board-role,
+html.rv-dark .rv-board-card.is-radball .rv-board-role { background: #3B6CC0; color: #fff; }
+html.rv-dark .rv-board-card .rv-board-name { color: var(--rv-dark-text) !important; }
+html.rv-dark .rv-board-card .rv-board-task { color: var(--rv-dark-muted); }
+html.rv-dark .rv-board-card .rv-board-contact a { color: var(--rv-dark-blue); }
+html.rv-dark .rv-board-chips li { color: var(--rv-dark-text); }
+/* Editor: leerer Bild-Platzhalter in Fotogröße */
+.rv-board-card .rv-board-photo .components-placeholder,
+.rv-board-card .rv-board-photo .block-editor-media-placeholder {
+	width: 132px !important;
+	min-width: 0 !important;
+	height: 160px !important;
+	min-height: 0 !important;
+	margin: 0 auto;
+	padding: 0 !important;
+	border: 4px solid var(--wp--preset--color--base);
+	border-radius: 14px;
+	overflow: hidden;
+	box-shadow: 0 6px 16px rgba(12, 30, 68, .2);
 }

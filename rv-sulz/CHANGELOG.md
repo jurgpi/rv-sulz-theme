@@ -8,6 +8,16 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.7.0] – 2026-11-20
+### Neu
+- Muster „Vorstand“: Obmann als breite Karte, Karten für Funktionäre und sportliche Leitung
+  (Foto oder Personen-Symbol, Funktion als Abzeichen, Aufgabe, Kontakt-Link), Kassaprüfer als
+  Namens-Chips und Mitmach-Aufruf. Inkl. Dunkelmodus und Handy-Ansicht.
+- Muster „Ehrenmitglieder“ (Karten mit Foto oder Stern) und Menüpunkt „Ehrenmitglieder“ unter Verein.
+- Chronik-Seite: Design für den eigenen HTML-Block (assets/css/chronik.css), nur dort geladen.
+### Behoben
+- Archiv: Zurück-Taste bei aktivem Suchfeld lud die ganze Seite neu und setzte den alten Suchbegriff wieder ein.
+
 ## [1.6.1] – 2026-11-19
 ### Behoben
 - Update-Prüfung: „Erneut überprüfen“ unter Dashboard → Aktualisierungen holt den neuesten

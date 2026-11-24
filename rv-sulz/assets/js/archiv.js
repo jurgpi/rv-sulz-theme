@@ -31,7 +31,7 @@
 		el.classList.add( 'is-loading' );
 		el.setAttribute( 'aria-busy', 'true' );
 
-		var focused = document.activeElement && document.activeElement.id === 'rv-archiv-suche';
+		var focused = !opts.pop && document.activeElement && document.activeElement.id === 'rv-archiv-suche';
 		var caret = focused ? document.activeElement.selectionStart : null;
 		var typed = focused ? document.activeElement.value : null;
 

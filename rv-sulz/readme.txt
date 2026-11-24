@@ -39,6 +39,16 @@ Block-Theme für den RV Enzian Sulz (Kunstrad & Radball). Benötigt WordPress 6.
   lassen sich verlinken.
 * Termine (Plugin „Simple Calendar“): Monats- und Listenansicht werden automatisch im Theme-Design
   gezeigt (assets/css/simple-calendar.css, inkl. Dunkelmodus und Handy). Nichts einzustellen.
+* Ehrenmitglieder: Seiten → Erstellen → Titel „Ehrenmitglieder“ (Adresse /ehrenmitglieder/) → Muster
+  „Ehrenmitglieder“ wählen, je Karte Foto per Klick auf den Bild-Platzhalter wählen (leer = Stern),
+  Platzhalter ersetzen, Karten per Duplizieren ergänzen. Ein Bild-Block
+  als erstes Element einer Karte = Foto statt Stern. Danach in Design → Menüs unter „Vorstand“ einfügen.
+* Vorstand: Seite bearbeiten (oder neu erstellen) → Muster „Vorstand“ einfügen. Obmann als breite Karte,
+  darunter Karten für Funktionäre und sportliche Leitung (Foto per Klick auf den Bild-Platzhalter, leer =
+  Personen-Symbol), Kassaprüfer als Namens-Chips, unten Mitmach-Aufruf. Karten per Duplizieren ergänzen,
+  nicht benötigte löschen; „Kontakt aufnehmen“ verlinkt auf /kontakt/ (bei Bedarf anpassen).
+* Chronik: Der eigene HTML-Block der Chronik-Seite (Klasse "rvc") wird automatisch im Theme-Design
+  gezeigt (assets/css/chronik.css). Inhalt bleibt im Block und wird dort gepflegt.
 * Schriften (Inter, Barlow Condensed) sind lokal eingebunden – keine Verbindung zu Google (DSGVO).
 
 == Versionierung & GitHub ==

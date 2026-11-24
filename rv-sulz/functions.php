@@ -65,6 +65,20 @@ add_action( 'wp_enqueue_scripts', 'rv_sulz_simcal_styles', 100 );
 add_action( 'wp_footer', 'rv_sulz_simcal_styles', 5 );
 
 /**
+ * Chronik-Seite: Design für den eigenen HTML-Block (.rvc) nur dort laden, wo er vorkommt.
+ */
+function rv_sulz_chronik_styles() {
+	if ( ! is_singular() ) {
+		return;
+	}
+	$post = get_queried_object();
+	if ( $post instanceof WP_Post && false !== strpos( $post->post_content, 'class="rvc' ) ) {
+		wp_enqueue_style( 'rv-sulz-chronik', get_template_directory_uri() . '/assets/css/chronik.css', array( 'rv-sulz' ), RV_SULZ_VERSION );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'rv_sulz_chronik_styles', 20 );
+
+/**
  * Simple Calendar: leeres Ortsfeld (nur Meta-Tags, kein Text) entfernen,
  * sonst erscheint ein einzelnes Ortssymbol ohne Ort.
  *
