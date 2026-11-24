@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- RV Enzian Sulz – Favicon: Monogramm „RV“ in schmaler, kräftiger Grotesk wie im Logo (Enzianblau #1F4D9A) -->
+  <rect width="64" height="64" rx="14" fill="#1F4D9A"/>
+  <g fill="#fff" transform="translate(32 32) scale(1.1) translate(-33 -32)">
+    <path fill-rule="evenodd" d="M12 15H24A8 10 0 0 1 28.5 33.27L33 49H25.5L21.6 35H19V49H12ZM19 21H23.5A3.5 4 0 0 1 23.5 29H19Z"/>
+    <path d="M34 15H41.2L44 38L46.8 15H54L48 49H40Z"/>
+  </g>
+</svg>
