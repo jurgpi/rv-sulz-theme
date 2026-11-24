@@ -69,7 +69,7 @@
 /* ---------- Trainingszeiten ---------- */
 .rv-mm-training { background: var(--mm-area); padding-block: var(--rv-section-space); scroll-margin-top: 5rem; }
 .rv-mm-training h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 2rem; }
-.rv-mm-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); gap: 1.5rem; }
+.rv-mm-plans { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr)); gap: 1.5rem; }
 .rv-mm-plan {
 	display: grid; grid-template-rows: auto 1fr; overflow: hidden;
 	background: var(--mm-card); border-radius: 20px;

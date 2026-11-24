@@ -8,6 +8,11 @@ Versionsschema `MAJOR.MINOR.PATCH`:
 Die Versionsnummer steht nur im Kopf von `style.css`. Neue Version bauen:
 `tools\build.ps1 -Bump patch|minor|major` (siehe readme.txt).
 
+## [1.13.2] – 2026-11-24
+### Behoben
+- Trainingszeiten: Ist nur eine Sparte eingetragen, nimmt ihre Karte die halbe Breite statt der ganzen
+  (vorher übergroßes Bild); mit zwei Sparten stehen die Karten nebeneinander.
+
 ## [1.13.1] – 2026-11-24
 ### Behoben
 - Dunkelmodus: „das erste Training ist gratis.“ auf der Startseite war dunkelblau auf Nachtblau (2,2:1) –
